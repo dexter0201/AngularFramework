@@ -1,0 +1,349 @@
+/*
+* CSS3 MENU
+* Author			: Phu Phung
+* Version			: 1.0
+* Create date 		: 2/12/2014
+* Modified Date 	:
+*/
+
+/* =========================== */
+
+/* GLOBAL VARIABLES + MIXINS
+/* =========================== */
+
+/* =========================== */
+
+/* WEB FONTS
+/* =========================== */
+
+@font-face {
+  font-family: 'Aller';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../fonts/aller.eot');
+  src: url('../fonts/aller.eot?#iefix') format('embedded-opentype'), url('../fonts/aller.woff') format('woff'), url('../fonts/aller.ttf') format('truetype'), url('../fonts/aller.svg#aller') format('svg');
+}
+
+@font-face {
+  font-family: 'Aller-Bold';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../fonts/allerbold.eot');
+  src: url('../fonts/allerbold.eot?#iefix') format('embedded-opentype'), url('../fonts/allerbold.woff') format('woff'), url('../fonts/allerbold.ttf') format('truetype'), url('../fonts/allerbold.svg#allerbold') format('svg');
+}
+
+@font-face {
+  font-family: 'Museo-500';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../fonts/museo500.eot');
+  src: url('../fonts/museo500.eot?#iefix') format('embedded-opentype'), url('../fonts/museo500.woff') format('woff'), url('../fonts/museo500.ttf') format('truetype'), url('../fonts/museo500.svg#museo500') format('svg');
+}
+
+.css3-menu-container > ul > li {
+  position: relative;
+}
+
+.css3-menu-container > ul > li > a {
+  position: relative;
+  display: block;
+  transition: background-color 200ms linear;
+}
+
+.css3-menu-container > ul > li > a:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: none;
+  width: 100%;
+  height: 4px;
+  background-color: #ffb100;
+  content: " ";
+}
+
+.css3-menu-container > ul > li:hover > a {
+  color: #ffffff;
+}
+
+.css3-menu-container > ul > li:hover > a:after {
+  display: block;
+}
+
+.css3-menu-container .menu-dropdown-block {
+  position: relative;
+  top: 100%;
+  z-index: 30;
+  width: auto;
+  height: 0;
+  margin-left: 15px;
+  overflow: hidden;
+  background: #fff;
+  visibility: hidden;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+  transition: opacity 100ms linear;
+}
+
+.css3-menu-container > ul > .right > .menu-dropdown-block {
+  right: 0;
+  margin-left: 0;
+}
+
+.css3-menu-container > ul > li:hover > .menu-dropdown-block {
+  height: auto;
+  max-height: 3000px;
+  min-height: 40px;
+  visibility: visible;
+}
+
+.css3-menu-container .menu-dropdown-block .md-container a {
+  padding: 0;
+  margin: 0;
+}
+
+.css3-menu-container .menu-dropdown-block .md-container ul {
+  list-style: none;
+}
+
+.css3-menu-container .md-container.md-notification {
+  width: 420px;
+}
+
+.css3-menu-container .md-container.md-notification li {
+  padding: 15px 0;
+  margin: 0 20px;
+  overflow: hidden;
+  font-size: 13px;
+  font-size: 0.9285714285714286rem;
+  border-bottom: solid 1px #efefef;
+}
+
+.css3-menu-container .md-container.md-notification li:last-child {
+  border: none;
+}
+
+.css3-menu-container .md-container.md-notification .avatar {
+  float: left;
+  margin-right: 10px;
+}
+
+.css3-menu-container .md-container.md-notification .btn-link {
+  display: block;
+  padding: 15px 0;
+  font-family: 'Aller-Bold', Arial, Calibri, Geneva, sans-serif;
+  color: #343434;
+  text-align: center;
+  border-top: solid 1px #efefef;
+}
+
+.css3-menu-container .md-container.user-panel .panel-head {
+  margin-bottom: 20px;
+}
+
+.css3-menu-container .md-container.user-panel .panel-head span {
+  font-family: 'Aller-Bold', Arial, Calibri, Geneva, sans-serif;
+  font-size: 14px;
+  font-size: 1rem;
+}
+
+.css3-menu-container .md-container.user-panel .panel-head img {
+  margin-right: 10px;
+}
+
+.css3-menu-container .md-container.mini-cart {
+  font-size: 13px;
+  font-size: 0.9285714285714286rem;
+}
+
+.css3-menu-container .md-container.mini-cart table {
+  width: 420px;
+  margin: 20px;
+  margin-bottom: 0;
+}
+
+.css3-menu-container .md-container.mini-cart table th {
+  padding-bottom: 10px;
+  font-weight: normal;
+  color: #c4c4c4;
+  border-bottom: solid 1px #efefef;
+}
+
+.css3-menu-container .md-container.mini-cart table th:nth-child(3),
+.css3-menu-container .md-container.mini-cart table th:nth-child(4) {
+  padding-left: 20px;
+}
+
+.css3-menu-container .md-container.mini-cart table td {
+  padding: 10px 0;
+  vertical-align: top;
+  border-bottom: solid 1px #efefef;
+}
+
+.css3-menu-container .md-container.mini-cart table tr:last-child td {
+  border: none;
+}
+
+.css3-menu-container .md-container.mini-cart table td:first-child {
+  width: 60px;
+}
+
+.css3-menu-container .md-container.mini-cart table td:nth-child(2) {
+  width: 205px;
+  padding-left: 10px;
+}
+
+.css3-menu-container .md-container.mini-cart table td:nth-child(3),
+.css3-menu-container .md-container.mini-cart table td:nth-child(4) {
+  width: 84px;
+  padding-left: 20px;
+}
+
+.css3-menu-container .md-container.mini-cart table .item-name {
+  font-family: 'Aller-Bold', Arial, Calibri, Geneva, sans-serif;
+}
+
+.css3-menu-container .md-container.mini-cart table .option {
+  color: #c4c4c4;
+}
+
+.css3-menu-container .md-container.mini-cart .cart-total {
+  padding: 15px 20px;
+  font-family: 'Aller-Bold', Arial, Calibri, Geneva, sans-serif;
+  background-color: #efefef;
+}
+
+.css3-menu-container .md-container.mini-cart .cart-total span {
+  margin-right: 10px;
+  font-family: 'Aller-Bold', Arial, Calibri, Geneva, sans-serif;
+}
+
+.css3-menu-container .md-container.mini-cart .cart-checkout {
+  padding: 15px 20px;
+  text-align: right;
+}
+
+.css3-menu-container .md-container.mini-cart .cart-checkout .btn {
+  padding: 5px 15px;
+  margin-right: 10px;
+}
+
+.css3-menu-container .md-container.mini-cart .cart-checkout .btn-yellow {
+  margin-right: 0;
+  font-family: 'Aller-Bold', Arial, Calibri, Geneva, sans-serif;
+}
+
+ul.menu-submenu-block {
+  min-width: 160px;
+  padding: 10px 0;
+  margin: 0;
+  list-style: none;
+}
+
+ul.menu-submenu-block li {
+  position: relative;
+  display: block;
+}
+
+ul.menu-submenu-block li.divider {
+  height: 1px;
+  margin: 10px 20px;
+  overflow: hidden;
+  background-color: #efefef;
+}
+
+ul.menu-submenu-block li a {
+  display: block;
+  padding: 5px 20px;
+  margin: 0;
+  font-size: 13px;
+  font-size: 0.9285714285714286rem;
+  color: #343434;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+ul.menu-submenu-block li:hover > a {
+  color: #343434;
+  background-color: #efefef;
+}
+
+ul.menu-submenu-block li i[class^='icon-'] {
+  display: inline-block;
+  margin-right: 10px;
+  font-style: normal;
+  vertical-align: middle;
+}
+
+ul.menu-submenu-block > li.has-submenu > a:after {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+  font-size: 1.4285714285714286rem;
+  font-weight: bold;
+  content: "\203A";
+}
+
+ul.menu-submenu-block > li > .menu-submenu-block {
+  position: relative;
+  top: 100%;
+  width: auto;
+  height: 0;
+  min-width: 160px;
+  text-align: left;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  visibility: hidden;
+}
+
+ul.menu-submenu-block > li.has-submenu:hover > .menu-submenu-block {
+  height: auto;
+  opacity: 1;
+  filter: alpha(opacity=100);
+  visibility: visible;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+  transition: opacity 100ms linear;
+}
+
+ul.menu-submenu-block > li > .menu-submenu-block a {
+  padding-left: 30px;
+}
+
+ul.menu-submenu-block > li > .menu-submenu-block > li > .menu-submenu-block a {
+  padding-left: 40px;
+}
+
+ul.menu-submenu-block > li > .menu-submenu-block > li > .menu-submenu-block > li > .menu-submenu-block a {
+  padding-left: 50px;
+}
+
+@media only screen and (min-width: 640px) {
+  .css3-menu-container .menu-dropdown-block {
+    position: absolute;
+    opacity: 0;
+    filter: alpha(opacity=0);
+  }
+  .css3-menu-container > ul > li:hover > .menu-dropdown-block {
+    overflow: visible;
+    opacity: 1;
+    filter: alpha(opacity=100);
+  }
+  .css3-menu-container > ul > li.right {
+    /*float: right;*/
+  
+  }
+  ul.menu-submenu-block > li > .menu-submenu-block {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    height: auto;
+    min-width: 160px;
+    background: #ffffff;
+  }
+  .css3-menu-container .menu-dropdown-block > ul.menu-submenu-block > li > ul.menu-submenu-block {
+    margin-left: 0;
+  }
+  ul.menu-submenu-block > li > .menu-submenu-block a {
+    padding-left: 20px !important;
+  }
+}

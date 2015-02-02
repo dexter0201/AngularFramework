@@ -1,0 +1,51 @@
+﻿<div data-ng-controller="homeController as vm">
+    <div class="col-md-5">
+        <div class="welcome">
+            <h2>Welcome to your<br />BuyDesire storefront</h2>
+            <p class="des">Take a moment to set up your store and start selling your products</p>
+            <div class="welcome-progress">
+                <!--<bd-progress-bar data-value="vm.model.getCompletedStep() * 25"></bd-progress-bar>-->
+                <div class="bar-border">
+                    <span class="line line-25"></span>
+                    <span class="line line-50"></span>
+                    <span class="line line-75"></span>
+                    <bd-progress-bar data-value="vm.model.getCompletedStep() * 25"></bd-progress-bar>
+                </div>
+                <!--<progressbar animate="true" max="100" value="vm.dynamic"><span style="color:black; white-space:nowrap;">{{vm.percentComplete}}</span></progressbar>-->
+            </div>
+            <div class="row buttons">
+                <div class="col-md-5"><button class="setup" data-ng-click="vm.btnSetupClick()">Setup</button></div>
+                <div class="col-md-7"><button class="complete" data-ng-click="vm.btnCompleteLaterClick()">Complete later</button></div>
+            </div>
+        </div>
+    </div>
+    <div class="welcome-section col-md-6 col-md-offset-1">
+        <div class="row">
+            <div class="col-md-6" data-ng-click="vm.activePage(0)">
+                <div class="step {{vm.model.isCompleted(0)}}">
+                    <i class="icon-brand"></i><span class="text">Your brand details</span>
+                    <span class="done"></span>
+                </div>
+            </div>
+            <div class="col-md-6" data-ng-click="vm.activePage(1)">
+                <div class="step {{vm.model.isCompleted(1)}}">
+                    <i class="icon-contact"></i><span class="text">Your contact details</span>
+                    <span class="done"></span>
+                </div>
+            </div>
+            <div class="col-md-6" data-ng-click="vm.activePage(2)">
+                <div class="step {{vm.model.isCompleted(2)}}">
+                    <i class="icon-store"></i><span class="text">Your store appearance</span>
+                    <span class="done"></span>
+                </div>
+            </div>
+            <div class="col-md-6" data-ng-click="vm.activePage(3)">
+                <div class="step {{vm.model.isCompleted(3)}}">
+                    <i class="icon-payment"></i><span class="text">Provide payment information</span>
+                    <span class="done"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

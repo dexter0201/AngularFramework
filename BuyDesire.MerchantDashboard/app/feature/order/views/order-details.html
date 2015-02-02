@@ -1,0 +1,186 @@
+﻿<div class="modal" style="display: block;" data-ng-controller="orderDetailsController as vm">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-content-wrap modal-form modal-small modal-brand admin-order-details">
+				<form>
+					<div class="modal-header">
+			            <h3 class="modal-title icon-break"><span class="text">Order #{{vm.model.OrderNumber}}</span></h3>
+			        </div>
+			        <div class="modal-body clearfix">
+			        	<div class="order-items">
+				        	<table>
+				        		<thead>
+				        			<tr>
+				        				<td class="chkbx">
+				        					<input type="checkbox" id="chkbx" name="product_item" checked="">
+				        					<label for="chkbx"></label>
+				        				</td>
+				        				<td>Items</td>
+				        				<td></td>
+				        			</tr>
+				        		</thead>
+				        		<tbody>
+									<tr data-ng-repeat="(key, orderItem) in vm.model.ListOrder">
+				        				<td class="chkbx">
+				        					<input type="checkbox" id="chkbx{{key + 1}}" name="product_item{{key + 1}}" checked="">
+				        					<label for="chkbx{{key + 1}}"></label>
+				        				</td>
+				        				<td><img ng-src="{{orderItem.MediumImage}}"></td>
+				        				<td>
+				        					<div class="product-details">
+				        						<div class="infos">
+				        							<div class="name">{{orderItem.ProductVariantName}}</div>
+				        							<div class="">
+				        								<p>
+				        									<span class="attribute">Option:</span> 
+				        									<!-- <span class="value">41 / Light Blue</span> -->
+				        									<span class="value">{{orderItem.Attributes}}</span>
+				        								</p>
+					        							<p class="product-id">
+					        								<span class="attribute">Product ID:</span> 
+					        								<span class="value">{{orderItem.ProductVariantID}}</span>
+					        							</p>
+					        							<p>
+					        								<span class="attribute">Quantity:</span> 
+					        								<span class="value">{{orderItem.Quantity}}</span> 
+					        								<span class="attribute">Price:</span> 
+					        								<span class="value">{{orderItem.Price | currency: '$': 2}}</span> 
+					        							</p>
+				        							</div>
+				        						</div>
+				        						<div class="shipping">
+				        							<p>
+				        								<span class="attribute">Shipping type:</span> 
+				        								<span class="value">{{orderItem.ShippingMethodType}}</span>
+				        							</p>
+				        							<p>
+				        								<span class="attribute">Status:</span> 
+				        								<span class="value">{{orderItem.OrderDetailStatus}}</span>
+				        							</p>
+				        							<p class="tracking">
+				        								<span class="attribute">Tracking #:</span> 
+				        								<!-- <span class="value">12345678910238431434141</span> -->
+				        							</p>
+				        							<p>
+				        								<span class="attribute">Estimated Arrival:</span> 
+				        								<span ng-show="orderItem.EstimatedArrival" class="value">
+				        									{{orderItem.EstimatedArrival | date: 'd MMM, y'}} via Australia Post
+				        								</span>
+				        							</p> 
+				        						</div>
+				        					</div>
+				        					<div class="edit-remove">
+				        						<i class="icon-modify"></i>
+				        						<ul>
+				        							<li>
+				        								<a href="" class="edit" ng-click="vm.editItem(orderItem.ProductVariantID)">
+				        									Edit
+				        								</a>
+				        							</li>
+				        							<li>
+				        								<a href="" class="remove">
+				        									Remove
+				        								</a>
+				        							</li>
+				        						</ul>
+				        					</div>
+				        				</td>
+				        			</tr>
+				        		</tbody>
+				        	</table>
+				        </div><!-- order-items -->
+
+				        <div class="shipping-infos">
+				        	<p>
+				        		<span class="attribute">Order placed</span><br>
+				        		<span class="value">{{vm.model.OrderDate | date: 'd MMM, y'}}</span>
+				        	</p>
+				        	<p>
+								<span class="attribute">Order ID</span><br>
+								<span class="value">#{{vm.model.OrderNumber}}</span>
+							</p>
+							<p>
+								<span class="attribute">Payment method</span><br>
+								<span class="value">{{vm.model.PaymentGateway}}</span>
+							</p>
+							<p>
+								<span class="attribute">Ship to</span><br>
+								<span class="value">{{vm.model.Address1}}</span><br>
+							</p>
+							<p>
+						        <span class="tel"><i class="icon"></i>{{vm.model.PhoneNumber}}</span>
+						        <span class="email"><i class="icon"></i><a href="mailto:beauthein@gmail.com">{{vm.model.EmailAddress}}</a></span>
+						    </p>
+
+						    <table class="total-payment">
+						    	<tbody>
+							    	<tr>
+							    		<td>Item total</td>
+							    		<td>{{vm.model.Total | currency: '$': 2}} 
+								    		<span class="currency" ng-if="vm.model.ListOrder">
+								    			{{vm.model.ListOrder[0].PaymentCurrencyCode}}
+								    		</span>
+							    		</td>
+							    	</tr>
+							    	<tr>
+							    		<td>Discount</td>
+							    		<td>{{vm.model.Discount | currency: '$': 2}} 
+							    			<span class="currency" ng-if="vm.model.ListOrder">
+							    				{{vm.model.ListOrder[0].PaymentCurrencyCode}}
+							    			</span>
+							    		</td>
+							    	</tr>
+							    	<tr>
+							    		<td>Gift Wrapping</td>
+							    		<td>{{vm.model.GiftingCost | currency: '$': 2}} 
+							    			<span class="currency" ng-if="vm.model.ListOrder">
+							    				{{vm.model.ListOrder[0].PaymentCurrencyCode}}
+							    			</span>
+							    		</td>
+							    	</tr>
+							    	<tr>
+							    		<td>Shipping</td>
+							    		<td>{{vm.model.ShippingCost | currency: '$': 2}} 
+							    			<span class="currency" ng-if="vm.model.ListOrder">
+							    				{{vm.model.ListOrder[0].PaymentCurrencyCode}}
+							    			</span>
+							    		</td>
+							    	</tr>
+							    </tbody>
+							    <tfoot>
+							    	<tr>
+							    		<td>Order total</td>
+							    		<td>{{vm.model.AmountPaid | currency: '$': 2}} 
+							    			<span class="currency" ng-if="vm.model.ListOrder">
+							    				{{vm.model.ListOrder[0].PaymentCurrencyCode}}
+							    			</span>
+							    		</td>
+							    	</tr>
+							    </tfoot>
+						    </table>
+				        </div><!-- shipping-infos -->
+			        </div>
+			        <div class="modal-footer">
+			        	<button class="btn btn-cancel" data-ng-click="vm.closeModal()">Cancel order</button>
+			            <button class="btn" data-ng-click="vm.closeModal()">Complete later</button>
+			            <button class="btn btn-primary" data-ng-click="vm.closeModal()">Fulfill items</button>
+			        </div>
+			        <a href="" data-ng-click="vm.closeModal()" class="btn-close"></a>
+			    </form>
+		    </div>
+		    <!-- modal content -->
+		    <div class="position"></div>
+		    <!-- modal vertical position -->
+		</div>
+    </div>
+    <!-- modal -->
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+        $('body').delegate('.edit-remove .icon-modify' ,'click', function (e) {
+	        e.preventDefault();
+            $(this).siblings('ul').toggle();
+	    });
+    });
+</script>

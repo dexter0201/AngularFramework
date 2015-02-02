@@ -1,0 +1,277 @@
+﻿<div class="page-dashboard" data-ng-controller="orderController as vm">
+	<div class="background">
+	</div>
+	<div class="container">
+		<div class="main-wrapper clearfix">
+			<div class="col-md-12">
+				<div class="page-title">
+					<h2>All Orders</h2>
+				</div>
+			</div>
+			<div class="col-md-12 admin-orders">
+
+				<ul class="simple-tab clearfix">
+					<li class="active tab" data-content="#tab-views">
+						All products
+					</li>
+					<li class="tab" data-content="#tab-tags">
+						Active
+					</li>
+					<li class="tab" data-content="#tab-desires">
+						Completed
+					</li>
+					<li class="tab" data-content="#tab-orders">
+						Cancelled
+					</li>
+				</ul>
+
+				<div id="tab-views" class="tab-content active">
+					<div class="all-products-content">
+						<form>
+							<div class="filter">
+								<div class="sale-id">
+									<select>
+										<option>Sale ID</option>
+										<option>1</option>
+										<option>2</option>
+									</select>
+								</div>
+
+								<input type="text" name="key-word" class="key-word" placeholder="Filter by key word"/>
+							</div>
+
+							<div class="result">
+								<table>
+									<thead>
+										<tr>
+											<td>Order #</td>
+											<td>Date</td>
+											<td>Ordered by</td>
+											<td>Status</td>
+											<td>Shipping</td>
+											<td>Net amount</td>
+											<td>Total</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr data-ng-repeat="order in vm.model.allOrder">
+											<td>
+												<a href="" ng-click="vm.openOrderDetailsModal(order.OrderNumber)">#{{order.OrderNumber}}</a>
+											</td>
+											<td>{{order.OrderDate | date: 'd MMM, y'}}</td>
+											<td>{{order.FullName}}</td>
+											<td><i class="icon {{order.ColorType}}"></i> {{order.PaymentType}}</td>
+											<td>{{order.ShippingMethodType}}</td>
+											<td>{{order.AmountPaid | currency: '$': 2}}</td>
+											<td>{{order.Total | currency: '$': 2}}</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</form>
+					</div><!-- all-products-content -->
+				</div>
+				<!-- Tags list active orders -->
+				<div id="tab-tags" class="tab-content">
+					<div class="all-products-content">
+						<div class="filter">
+							<div class="sale-id">
+								<select>
+									<option>Sale ID</option>
+									<option>1</option>
+									<option>2</option>
+								</select>
+							</div>
+
+							<input type="text" name="key-word" class="key-word" placeholder="Filter by key word"/>
+						</div>
+						<div class="result">
+							<table>
+								<thead>
+									<tr>
+										<td>Order #</td>
+										<td>Date</td>
+										<td>Ordered by</td>
+										<td>Status</td>
+										<td>Shipping</td>
+										<td>Net amount</td>
+										<td>Total</td>
+									</tr>
+								</thead>
+								<tbody>
+									<tr data-ng-repeat="order in vm.model.activeOrder">
+										<td>
+											<a href="">#{{order.OrderNumber}}</a>
+										</td>
+										<td>{{order.OrderDate | date: 'd MMM, y'}}</td>
+										<td>{{order.FullName}}</td>
+										<td><i class="icon {{order.ColorType}}"></i> {{order.PaymentType}}</td>
+										<td>{{order.ShippingMethodType}}</td>
+										<td>{{order.AmountPaid | currency: '$': 2}}</td>
+										<td>{{order.Total | currency: '$': 2}}</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<!-- Tags list completed orders -->
+				<div id="tab-desires" class="tab-content">
+					<div class="all-products-content">
+						<div class="filter">
+							<div class="sale-id">
+								<select>
+									<option>Sale ID</option>
+									<option>1</option>
+									<option>2</option>
+								</select>
+							</div>
+
+							<input type="text" name="key-word" class="key-word" placeholder="Filter by key word"/>
+						</div>
+						<div class="result">
+							<table>
+								<thead>
+									<tr>
+										<td>Order #</td>
+										<td>Date</td>
+										<td>Ordered by</td>
+										<td>Status</td>
+										<td>Shipping</td>
+										<td>Net amount</td>
+										<td>Total</td>
+									</tr>
+								</thead>
+								<tbody>
+									<tr data-ng-repeat="order in vm.model.completedOrder">
+										<td>
+											<a href="">#{{order.OrderNumber}}</a>
+										</td>
+										<td>{{order.OrderDate | date: 'd MMM, y'}}</td>
+										<td>{{order.FullName}}</td>
+										<td><i class="icon {{order.ColorType}}"></i> {{order.PaymentType}}</td>
+										<td>{{order.ShippingMethodType}}</td>
+										<td>{{order.AmountPaid | currency: '$': 2}}</td>
+										<td>{{order.Total | currency: '$': 2}}</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<!-- Tags list cancelled orders -->
+				<div id="tab-orders" class="tab-content">
+					<div class="all-products-content">
+						<div class="filter">
+							<div class="sale-id">
+								<select>
+									<option>Sale ID</option>
+									<option>1</option>
+									<option>2</option>
+								</select>
+							</div>
+
+							<input type="text" name="key-word" class="key-word" placeholder="Filter by key word"/>
+						</div>
+						<div class="result">
+							<table>
+								<thead>
+									<tr>
+										<td>Order #</td>
+										<td>Date</td>
+										<td>Ordered by</td>
+										<td>Status</td>
+										<td>Shipping</td>
+										<td>Net amount</td>
+										<td>Total</td>
+									</tr>
+								</thead>
+								<tbody>
+									<tr data-ng-repeat="order in vm.model.CancelledOrder">
+										<td>
+											<a href="">#{{order.OrderNumber}}</a>
+										</td>
+										<td>{{order.OrderDate | date: 'd MMM, y'}}</td>
+										<td>{{order.FullName}}</td>
+										<td><i class="icon {{order.ColorType}}"></i> {{order.PaymentType}}</td>
+										<td>{{order.ShippingMethodType}}</td>
+										<td>{{order.AmountPaid | currency: '$': 2}}</td>
+										<td>{{order.Total | currency: '$': 2}}</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- container -->
+
+	<div class="container transparent">
+	<div class="widget-bottom">
+				<div class="row">
+					<div class="col-md-4">
+					<div class="widget-item">
+						<div class="page-title">
+							<h2>Best sellers</h2>
+						</div>
+						<div class="product-image">
+							<img src="/assets/images/widget-bottom-product.jpg" width="73" height="73" alt="sample product">
+						</div>
+						<div class="product-detail">
+							<p>Lorem ipsum dolor site amet, consectetuer</p>
+							<span class="quantity">67 sales</span>
+							<span class="status green"><i class="icon icon-arrow-green"></i>12.5%</span>
+						</div>
+					</div>
+					</div>
+
+					<div class="col-md-4">
+					<div class="widget-item">
+						<div class="page-title">
+							<h2>Inventory</h2>
+						</div>
+						<div class="product-image">
+							<img src="/assets/images/widget-bottom-product.jpg" width="73" height="73" alt="sample product">
+						</div>
+						<div class="product-detail">
+							<p>Lorem ipsum dolor site amet, consectetuer</p>
+							<span class="quantity">67 sales</span>
+							<span class="status red">last sale: 6 hrs ago</span>
+						</div>
+					</div>
+					</div>
+
+					<div class="col-md-4">
+					<div class="widget-item">
+						<div class="page-title">
+							<h2>Promotions</h2>
+						</div>
+						<div class="product-image">
+							<img src="/assets/images/widget-bottom-product.jpg" width="73" height="73" alt="sample product">
+						</div>
+						<div class="product-detail">
+							<p>Lorem ipsum dolor site amet, consectetuer</p>
+							<span class="quantity">67 sales</span>
+							<span class="status green"><i class="icon icon-arrow-green"></i>163%</span>
+						</div>
+					</div>
+					</div>
+				</div>
+			</div>
+	</div>
+
+</div>
+
+<script>
+    $(document).ready(function(){
+        //toggle simple tab
+        $('.simple-tab .tab').click(function(e){
+            e.preventDefault();
+            var $tab = $(this).data('content');
+            $(this).addClass('active').siblings().removeClass('active');
+            $($tab).addClass('active').siblings().removeClass('active');
+        });
+    });
+</script>

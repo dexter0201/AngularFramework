@@ -1,0 +1,188 @@
+﻿#region sinh.tran*/
+.view-container { position: relative; overflow: hidden; }
+.shuffle-animation.ng-enter,
+.shuffle-animation.ng-leave { position: relative; }
+.shuffle-animation.ng-enter { -moz-transition: ease-out all 0.3s 0.4s; -o-transition: ease-out all 0.3s 0.4s; -webkit-transition: ease-out all 0.3s 0.4s; transition: ease-out all 0.3s 0.4s; left: 2em; opacity: 0; }
+    .shuffle-animation.ng-enter.ng-enter-active { left: 0; opacity: 1; }
+.shuffle-animation.ng-leave { -moz-transition: 0.3s ease-out all; -o-transition: 0.3s ease-out all; -webkit-transition: 0.3s ease-out all; transition: 0.3s ease-out all; left: 0; opacity: 1; }
+    .shuffle-animation.ng-leave.ng-leave-active { left: 2em; opacity: 0; }
+.fader-animation.ng-enter,
+.fader-animation.ng-leave,
+.fader-animation.ng-move { position: relative; }
+.fader-animation.ng-enter,
+.fader-animation.ng-leave { -webkit-transition: cubic-bezier(0.250, 0.460, 0.450, 0.940) all 0.5s; -moz-transition: cubic-bezier(0.250, 0.460, 0.450, 0.940) all 0.5s; -o-transition: cubic-bezier(0.250, 0.460, 0.450, 0.940) all 0.5s; transition: cubic-bezier(0.250, 0.460, 0.450, 0.940) all 0.5s; opacity: 1; }
+    .fader-animation.ng-enter,
+    .fader-animation.ng-leave.ng-leave-active { opacity: 0; }
+        .fader-animation.ng-enter.ng-enter-active { opacity: 1; }
+.fader-animation.ng-move { opacity: 0.5; }
+    .fader-animation.ng-move.ng-move-active { opacity: 1; }
+.dissolve-animation.ng-hide-remove { display: inline !important; }
+.dissolve-animation.ng-hide-remove,
+.dissolve-animation.ng-hide-add { -webkit-transition: 0.8s linear all; -moz-transition: 0.8s linear all; -o-transition: 0.8s linear all; transition: 0.8s linear all; }
+    .dissolve-animation.ng-hide-remove.ng-hide-remove-active,
+    .dissolve-animation.ng-hide-add { opacity: 1; }
+        .dissolve-animation.ng-hide-add.ng-hide-add-active,
+        .dissolve-animation.ng-hide-remove { opacity: 0; }
+#toast-container.toast-top-full-width > div, #toast-container.toast-bottom-full-width > div { margin: 4px auto; }
+
+a, a:link, a:hover, a:active, a:focus { text-decoration: none; outline: 0; }
+
+
+
+
+/*validate*/
+/*.validationMessage { color: #ff0000; padding: 5px 0; }
+input.has-error { background-color: #ffdfdf !important; }*/
+/*#endregion */
+
+.angular-google-map-container { height: 535px; width:100% }
+
+/*Lich*/
+.nav-responsive {
+        position: absolute;
+        right: 110px;
+        background-color: transparent;
+        background-image: none;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        margin-bottom: 8px;
+        margin-right: 15px;
+        margin-top: 3px;
+        padding: 9px 10px;
+        border-color: #ddd;
+    }
+    .icon-bar {
+        border-radius: 1px;
+        display: block;
+        height: 2px;
+        width: 22px;
+        background-color: #888;
+    }
+    .navbar-collapse.in {
+        width: 200px;
+        background: white;
+        box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1) inset;
+        position: absolute;
+        right: 125px;
+        top: 41px;
+        z-index: 99;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        border-radius: 4px;
+}
+
+@media screen and (min-width: 768px) {
+    .nav-responsive {
+        display: none;
+    }
+}
+
+.head-info {
+    min-height: 180px;
+}
+
+.page-locations .item {
+    min-height: 400px;
+}
+
+/*.modal-location-details .item-full .error {
+    margin-left: 125px;
+}
+
+.modal-location-details .map-field .input-wrap.has-error {
+    margin-bottom: 12px;
+}
+
+.modal-location-details .map-field .error {
+    position: absolute;
+    margin-top: 30px;
+}*/
+
+.modal-location-details .item-full .form-control {
+    width: 65% !important;
+}
+
+.current {
+    border-bottom: 4px solid #ffb100;
+}
+
+.dropdown-menu {
+    overflow: hidden;
+}
+
+#productPanelBody {
+    height: 230px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.form-control-inline {
+    display: inline !important;
+}
+
+.header .main-nav > ul > li .has-noti .notification {
+    right: -4px !important;
+    width: 22px !important;
+}
+
+/*#endregion*/
+
+/* Nhan */
+.input-wrap {
+    position: relative;
+}
+.modal-form .input-wrap {
+  overflow: visible !important;
+}
+.error-popup {
+    font-size: 12px;
+    font-size: 1.2rem;
+    color: red;
+    padding-top: 6px;
+    position: absolute;
+    bottom: 130%;
+    right: 0%;
+}
+
+.error-popup .text {
+    padding: 10px 16px;
+    border: #b8b8b8 solid 1px;
+    background: #fff;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: 1px 2px 0 0 #b8b8b8;
+    -moz-box-shadow: 1px 2px 0 0 #b8b8b8;
+    box-shadow: 1px 2px 0 0 #b8b8b8;
+    text-align: center;
+    color: #666;
+    line-height: 1.35em;
+}
+
+.error-popup .arrow {
+    content: "";
+    font-size: 0;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -8px;
+    margin-top: -9px;
+    width: 0;
+    height: 0;
+    width: 16px;
+    height: 16px;
+    -webkit-box-shadow: 3px 2px 0 0 #b8b8b8;
+    -moz-box-shadow: 3px 2px 0 0 #b8b8b8;
+    box-shadow: 3px 2px 0 0 #b8b8b8;
+    transform: rotate(45deg);
+    z-index: 10;
+    background: #fff;
+}
+.form-control.has-error {
+    border-color: red;
+}
+.form-control.has-error:focus {
+    border-color: red;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(255,0,0,.6);
+}
+/* End Nhan's css */

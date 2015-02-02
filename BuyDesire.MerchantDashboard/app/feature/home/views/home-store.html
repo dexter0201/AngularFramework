@@ -1,0 +1,43 @@
+﻿<div class="modal-content-wrap modal-form modal-medium modal-store" data-ng-controller="homeStoreController as vm">
+    <form>
+        <div class="modal-header">
+            <h3 class="modal-title icon-break"><i class="icon icon-32 icon-store"></i><span class="text">Your store appearance</span></h3>
+        </div>
+        <div class="modal-body">
+            <div class="form-wrap">
+                <div class="item">
+                    <label for="upload-logotype" class="block">Your logotype <span style='color:#FF0000'>{{vm.msgLogoImageUrl}}</span></label>
+                    <p class="des">Logotype in JPG, GIF or PNG. Maximum file size of 5MB</p>
+                    <div class="input-wrap input-inline input-upload input-image image-small">
+                        <div class="img-wrap">
+                           <img ng-src="{{vm.model.LogoImageUrl}}" alt="" border="" width="124" height="124" /> 
+                        </div>
+                        <div class="upload-button">
+                            <button class="btn icon-inline"><i class="icon icon-12 icon-upload"></i><span class="text">Upload logotype</span></button>
+                            <input type="file" id="File1" ng-file-select="vm.btnUpload($files, 'LogoImage', '')" />
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <label for="upload-logotype" class="block">Your cover image <span style='color:#FF0000'>{{vm.msgCoverImageUrl}}</span></label>
+                    <p class="des">Recommended demensions of 920x270. Maximum file size of 5MB</p>                    
+                    <div class="input-wrap input-upload input-image image-full">
+                        <div class="img-wrap">
+                            <img ng-src="{{vm.model.CoverImageUrl}}" alt="" border="" width="594" height="167" />
+                        </div>
+                        <div class="upload-button">
+                            <button class="btn icon-inline"><i class="icon icon-12 icon-upload"></i><span class="text">Upload logotype</span></button>
+                            <input type="file" id="upload-logotype" ng-file-select="vm.btnUpload($files, '', 'CoverImage')" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn" data-ng-click="vm.btnCancelClicked()">Cancel</button>
+            <button class="btn btn-primary" data-ng-click="vm.btnSaveClicked()" ng-disabled="vm.isDisabled">Save</button>
+        </div>
+        <a href="" class="btn-close" data-ng-click="vm.btnCancelClicked()"></a>
+    </form>
+</div>
+<div class="position"></div>

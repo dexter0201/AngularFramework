@@ -1,0 +1,143 @@
+/******************************
+*  		Master Page 	      *
+******************************/
+.css3-menu-container .cart-checkout {
+  padding: 15px 35px;
+  text-align: right;
+}
+.css3-menu-container .cart-checkout .btn {
+  padding: 5px 15px;
+  margin-right: 10px;
+}
+.search-form input[type="text"] {
+  width: 150px !important;
+}
+.navbar-brand {
+  margin: 19px 39px 19px 15px;
+}
+/* showAppbar */
+.showAppbar .app-logo {
+  padding-left: 0px !important;
+}
+.showAppbar .get-app-form {
+  padding: 0px;
+}
+.showAppbar .get-app-form input {
+  width: 192px !important;
+}
+.showAppbar .close_bd_app_logined {
+  right: 45px !important;
+}
+/* Image wrapper */
+.bd-wrapper-product {
+  height: 212px;
+  display: block;
+  text-align: center;
+}
+.bd-wrapper-product img {
+  max-width: 100%;
+  max-height: 100%;
+  width: inherit !important;
+  height: inherit !important;
+}
+.bd-productname-height-1 {
+  height: 40px !important;
+}
+/******************************
+*  		Product Detail 	      *
+******************************/
+.page-product-detail-landing {
+  /* Landing page */
+  /* Share popup */
+  /* Expand info popup */
+}
+.page-product-detail-landing .db-desireInfo-thumb img {
+  width: inherit !important;
+  max-width: 100%;
+  max-height: 100%;
+  height: inherit;
+}
+.page-product-detail-landing .other-items .carousel-control,
+.page-product-detail-landing .add-following-list .carousel-control {
+  display: none;
+}
+.page-product-detail-landing .other-items:hover .carousel-control,
+.page-product-detail-landing .add-following-list:hover .carousel-control {
+  display: inherit;
+}
+.page-product-detail-landing .add-following-list img {
+  max-width: 100%;
+  max-height: 100%;
+  height: inherit !important;
+}
+.page-product-detail-landing .following-product li img {
+  max-width: 100%;
+  min-height: 100%;
+  width: inherit !important;
+  height: inherit !important;
+}
+.page-product-detail-landing .merchant-product li {
+  height: 100px;
+}
+.page-product-detail-landing .merchant-product li img {
+  width: inherit !important;
+  height: inherit !important;
+  max-width: 100%;
+  max-height: 100%;
+}
+.page-product-detail-landing .figure-photo .images .item {
+  width: 100%;
+}
+.page-product-detail-landing .figure-photo .images .item .heroImage {
+  max-height: 545px;
+  min-height: 260px;
+  display: inline-block;
+}
+.page-product-detail-landing #product-share-modal .link {
+  word-break: break-all;
+  padding-right: 10px;
+}
+.page-product-detail-landing #product-more-details-modal #slide-product-details .item {
+  padding: inherit !important;
+  padding-bottom: 40px !important;
+}
+.page-product-detail-landing #product-more-details-modal #slide-product-details .carousel-indicators img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+  width: auto;
+}
+.page-product-detail-landing .modal-dialog {
+  margin-top: 50px !important;
+  /*.easyzoom {
+		  	display: table !important;
+			width: 100% !important;
+
+			a {
+				display: table-cell !important; 
+				vertical-align: middle !important;
+			}
+	  	}*/
+}
+.page-product-detail-landing .dropdown-menu {
+  max-height: 320px;
+  overflow: auto;
+}
+/*************************************
+*		Check out page 				 *
+**************************************/
+.checkout-cvv-modal {
+  width: 345px;
+}
+/**************************************
+*		Checkout Success Page
+**************************************/
+#page-checkout-finish .order-summary .product-title {
+  display: block;
+}
+#page-checkout-finish .order-summary .product-thumb img {
+  max-width: 100%;
+  max-height: 100%;
+  width: inherit;
+}

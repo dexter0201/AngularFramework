@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html data-ng-app="app">
+<head>
+    <title data-ng-bind="title"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta />
+    @Styles.Render("~/assets/style.css")
+    @Scripts.Render("~/assets/libs.js", "~/assets/app.js")
+    <!--[if IE]>
+    <script src="//cdn.rawgit.com/jpillora/xdomain/0.6.15/dist/0.6/xdomain.min.js" slave="http://dev.api.buydesire.com/proxy.html"></script>
+    <![endif]-->
+</head>
+<body class="fix_overflow" data-ng-include="layout">
+    @RenderBody()
+</body>
+</html>

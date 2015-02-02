@@ -1,0 +1,264 @@
+<div class="modal" style="display: block;" data-ng-controller="locationFormDetailsController as vm">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-content-wrap modal-form modal-large modal-location-details">
+                <form novalidate name="locationDetailForm" novalidate angular-validator angular-validator-submit="">
+                    <div class="modal-header">
+                        <h3 class="modal-title icon-break">
+                            <span class="text" ng-show="!vm.model.isEdit">Add location</span>
+                            <span class="text" ng-show="vm.model.isEdit">Edit location</span>
+                        </h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-wrap">
+                            <div class="list clearfix">
+                                <div class="item item-inline item-half info">
+                                    <div class="item item-full">
+                                        <label for="store-code" class="inline">Store code<span class="required">*</span></label>
+                                        <div class="input-wrap">
+                                            <input type="text" id="store-code"
+                                                name="StoreCode"
+                                                autocomplete="off"
+                                                ng-model="vm.model.StoreCode"
+                                                validate-on="dirty"
+                                                validator="vm.model.validator().StoreCode(vm.model.StoreCode) === true"
+                                                invalid-message="vm.model.validator().StoreCode(vm.model.StoreCode)" />
+                                        </div>
+                                        <div class="error" data-ng-show="vm.FailureStoreCode">{{vm.MessagesStoreCode}}</div>
+                                    </div>
+                                    <div class="item item-full">
+                                        <label for="store-name" class="inline">Store name<span class="required">*</span></label>
+                                        <div class="input-wrap">
+                                            <input type="text" id="store-name"
+                                                name="StoreName"
+                                                autocomplete="off"
+                                                ng-model="vm.model.StoreName"
+                                                ng-change="vm.resetContentInfoBox()"
+                                                validate-on="dirty"
+                                                validator="vm.model.validator().StoreName(vm.model.StoreName) === true"
+                                                invalid-message="vm.model.validator().StoreName(vm.model.StoreName)" />
+                                        </div>
+                                        <div class="error" data-ng-show="vm.FailureStoreName">{{vm.MessagesStoreName}}</div>
+                                    </div>
+                                    <div class="item item-full">
+                                        <label for="store-address1" class="inline">Address line 1<span class="required">*</span></label>
+                                        <div class="input-wrap">
+                                            <input type="text" id="store-address1"
+                                                name="AddressLine1"
+                                                autocomplete="off"
+                                                ng-model="vm.model.AddressLine1"
+                                                ng-change="vm.resetContentInfoBox()"
+                                                validate-on="dirty"
+                                                validator="vm.model.validator().AddressLine1(vm.model.AddressLine1) === true"
+                                                invalid-message="vm.model.validator().AddressLine1(vm.model.AddressLine1)" />
+                                        </div>
+                                    </div>
+                                    <div class="item item-full">
+                                        <label for="store-address2" class="inline">Address line 2</label>
+                                        <div class="input-wrap">
+                                            <input type="text" ng-model="vm.model.AddressLine2" id="store-address2" />
+                                        </div>
+                                    </div>
+                                    <div class="item item-full">
+                                        <label for="store-country" class="inline">Country<span class="required">*</span></label>
+                                        <div class="input-wrap">
+                                            <select id="store-country" data-ng-model="vm.model.CountryID" data-ng-change="vm.loadStates(vm.model.CountryID)" ng-options="country.CountryID as country.Name for country in vm.model.countries">
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="item item-full">
+                                        <label for="store-state" class="inline">State</label>
+                                        <div class="input-wrap" ng-show="vm.model.states">
+                                            <select name="StateName" data-ng-model="vm.model.StateID"
+                                                ng-options="state.StateID as state.Name for state in vm.model.states">
+                                            </select>
+                                        </div>
+                                        <div class="input-wrap" data-ng-show="!vm.model.states">
+                                            <input type="text" name="StateName" data-ng-model="vm.model.StateID" id="store-state" />
+                                        </div>
+                                    </div>
+                                    <div class="item item-full">
+                                        <label for="store-city" class="inline">City<span class="required">*</span></label>
+                                        <div class="input-wrap">
+                                            <input type="text" id="store-city"
+                                                data-ng-model="vm.model.City"
+                                                name="City"
+                                                autocomplete="off"
+                                                data-ng-model="vm.model.City"
+                                                validate-on="dirty"
+                                                validator="vm.model.validator().City(vm.model.City) === true"
+                                                invalid-message="vm.model.validator().City(vm.model.City)" />
+                                        </div>
+                                    </div>
+                                    <div class="item item-full">
+                                        <label for="store-postal" class="inline">Postal code<span class="required">*</span></label>
+                                        <div class="input-wrap">
+                                            <input type="text"
+                                                name="PostCode"
+                                                autocomplete="off"
+                                                data-ng-model="vm.model.PostCode"
+                                                validate-on="dirty"
+                                                validator="vm.model.validator().PostCode(vm.model.PostCode) === true"
+                                                invalid-message="vm.model.validator().PostCode(vm.model.PostCode)" />
+                                        </div>
+                                    </div>
+                                    <div class="item item-full">
+                                        <label for="store-phone1" class="inline">Phone number 1<span class="required">*</span></label>
+                                        <div class="input-wrap">
+                                            <input type="text" id="store-phone1"
+                                                name="PhoneNumber1"
+                                                ng-change="vm.resetContentInfoBox()"
+                                                autocomplete="off"
+                                                data-ng-model="vm.model.PhoneNumber1"
+                                                validate-on="dirty"
+                                                validator="vm.model.validator().PhoneNumber1(vm.model.PhoneNumber1) === true"
+                                                invalid-message="vm.model.validator().PhoneNumber1(vm.model.PhoneNumber1)" />
+                                        </div>
+                                    </div>
+                                    <div class="item item-full">
+                                        <label for="store-phone2" class="inline">Phone number 2</label>
+                                        <div class="input-wrap">
+                                            <input type="text" id="store-phone2"
+                                                name="PhoneNumber2"
+                                                autocomplete="off"
+                                                data-ng-model="vm.model.PhoneNumber2"
+                                                validate-on="dirty"
+                                                validator="vm.model.validator().PhoneNumber2(vm.model.PhoneNumber2) === true"
+                                                invalid-message="vm.model.validator().PhoneNumber2(vm.model.PhoneNumber2)" />
+                                        </div>
+                                    </div>
+                                    <div class="item item-full">
+                                        <label for="store-mobile" class="inline">Mobile number</label>
+                                        <div class="input-wrap">
+                                            <input type="text" id="store-mobile"
+                                                data-ng-model="vm.model.MobileNumber" />
+                                        </div>
+                                    </div>
+                                    <div class="item item-full">
+                                        <label for="store-fax" class="inline">Fax number</label>
+                                        <div class="input-wrap">
+                                            <input type="text" id="store-fax" data-ng-model="vm.model.Fax" />
+                                        </div>
+                                    </div>
+                                    <div class="item item-full">
+                                        <label for="store-web" class="inline">Website</label>
+                                        <div class="input-wrap">
+                                            <input type="text" placeholder="http://" id="store-web"
+                                                data-ng-model="vm.model.Website"
+                                                name="Website"
+                                                validate-on="dirty"
+                                                validator="vm.model.validator().Website(vm.model.Website) === true"
+                                                invalid-message="vm.model.validator().Website(vm.model.Website)" />
+                                        </div>
+                                    </div>
+                                    <div class="item item-full">
+                                        <label for="store-email" class="inline">Email</label>
+                                        <div class="input-wrap">
+                                            <input type="text" id="store-email"
+                                                name="EmailAddress"
+                                                data-ng-model="vm.model.EmailAddress"
+                                                autocomplete="off"
+                                                validate-on="dirty"
+                                                validator="vm.model.validator().EmailAddress(vm.model.EmailAddress) === true"
+                                                invalid-message="vm.model.validator().EmailAddress(vm.model.EmailAddress)" />
+                                        </div>
+                                    </div>
+                                    <div class="item item-full">
+                                        <label for="store-hours" class="inline">Opening hours</label>
+                                        <div class="input-wrap">
+                                            <textarea placeholder="Maximum 255 chars" id="store-hours"
+                                                name="Hours"
+                                                autocomplete="off"
+                                                data-ng-model="vm.model.Hours"
+                                                ng-change="vm.resetContentInfoBox()"
+                                                validate-on="dirty"
+                                                validator="vm.model.validator().OpeningHours(vm.model.Hours) === true"
+                                                invalid-message="vm.model.validator().OpeningHours(vm.model.Hours)" />
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                    <div class="item item-full">
+                                        <label for="store-des" class="inline">Description</label>
+                                        <div class="input-wrap">
+                                            <textarea placeholder="Maximum 255 chars" id="store-des"
+                                                name="Description"
+                                                data-ng-model="vm.model.Description"
+                                                validate-on="dirty"
+                                                validator="vm.model.validator().Description(vm.model.Description) === true"
+                                                invalid-message="vm.model.validator().Description(vm.model.Description)" />
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item item-inline item-half">
+                                    <div class="map-wrap">
+                                        <p>To find store’s location on Google Maps, just enter its coordinates or search by address</p>
+                                        <ul>
+                                            <li>
+                                                <input type="radio" checked name="map-choice" value="1" ng-model="vm.tmpChoice" id="map-choice-lattitude" />
+                                                <label for="map-choice-lattitude">
+                                                    <i></i><span class="text">I have Lattitude and Longitude of store</span>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <input type="radio" name="map-choice" value="2" ng-model="vm.tmpChoice" id="map-choice-address" />
+                                                <label for="map-choice-address">
+                                                    <i></i><span class="text">I don't have Lattitude and Longitude of store</span>
+                                                </label>
+                                            </li>
+                                        </ul>
+                                        <div class="map-field">
+                                            <div class="field clearfix field-attitude {{vm.getChoice(1)}}">
+                                                <div class="input-wrap">
+                                                    <input type="text"
+                                                        name="Latitude"
+                                                        placeholder="Latitude"
+                                                        ng-model="vm.model.Latitude"
+                                                        ng-change="vm.geoCode()"
+                                                        validate-on="dirty"
+                                                        validator="vm.model.validator().LatitudeLongitude(vm.model.Latitude) === true"
+                                                        invalid-message="vm.model.validator().LatitudeLongitude(vm.model.Latitude)" />
+                                                </div>
+                                                <div class="input-wrap">
+                                                    <input type="text"
+                                                        name="Longitude"
+                                                        placeholder="Longitude"
+                                                        ng-change="vm.geoCode()"
+                                                        ng-model="vm.model.Longitude"
+                                                        validate-on="dirty"
+                                                        validator="vm.model.validator().LatitudeLongitude(vm.model.Longitude) === true"
+                                                        invalid-message="vm.model.validator().LatitudeLongitude(vm.model.Longitude)" />
+                                                </div>
+                                            </div>
+                                            <div class="field clearfix field-address {{vm.getChoice(2)}}">
+                                                <div class="input-wrap">
+                                                    <input type="text" ng-change="vm.geoCode()" placeholder="Search by address" ng-model="vm.address" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="map-location">
+                                            <div id="map-canvas">
+                                                <ui-gmap-google-map ng-if="vm.model" center="vm.center" zoom="vm.zoom" draggable="false" options="vm.options" events="vm.events">
+                                                </ui-gmap-google-map>
+                                            </div>
+                                            <!-- place the google map -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn" data-ng-click="vm.btnCancelClicked()">Cancel</button>
+                        <button ng-disabled="locationDetailForm.$invalid" class="btn btn-primary" data-ng-click="vm.btnSaveClicked(vm.model.RetailerStoreID)">Save location</button>
+                    </div>
+                    <a href="" class="btn-close" data-ng-click="vm.btnCancelClicked()"></a>
+                </form>
+            </div>
+            <!-- modal content -->
+            <div class="position"></div>
+            <!-- modal vertical position -->
+        </div>
+    </div>
+    <!-- modal -->
+</div>

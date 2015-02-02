@@ -1,0 +1,270 @@
+﻿<div class="page-dashboard" data-ng-controller="dashboardController as vm">
+
+    <div class="background"></div>
+
+    <div class="container">
+
+        <div class="main-wrapper clearfix">
+
+            <div class="col-md-12">
+                <div class="page-title">
+                    <!-- <h2>Stats for 2 June 2014</h2> -->
+                    <h2>Stats</h2>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+
+                <ul class="calendar">
+                    <li class="active"><a href="" data-ng-click="vm.switchTime(vm.model.eTime.daily)">Daily</a></li><li> <!-- hack to fix inline-block bug -->
+                        <a href="" data-ng-click="vm.switchTime(vm.model.eTime.weekly)">Weekly</a></li><li>
+                        <a href="" data-ng-click="vm.switchTime(vm.model.eTime.monthly)">Monthly</a></li><li>
+                        <a href="" data-ng-click="vm.switchTime(vm.model.eTime.specific)">Specific date</a></li>
+                </ul>
+
+                <!-- data-datepicker-popup="dd/MM/yyyy" -->
+                <div class="col-md-2 custom-datepicker" data-ng-if="vm.model.selectedTime == vm.model.eTime.specific">
+                    <p class="input-group">
+                        <input type="text"
+                               class="form-control"
+                               
+                               ng-model="vm.model.selectedStartDate"
+                               data-is-open="vm.model.openStartDate"
+                               data-min-date="'2012-01-01'"
+                               data-max-date="'2015-01-01'"/>
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="vm.openStartDate($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </p>
+                </div>
+
+                <div class="col-md-2 custom-datepicker date-to" data-ng-if="vm.model.selectedTime == vm.model.eTime.specific">
+                    <p class="input-group">
+                        <input type="text"
+                           class="form-control"
+                           
+                           ng-model="vm.model.selectedEndDate"
+                           data-is-open="vm.model.openEndDate"
+                           data-min-date="'2012-01-01'"
+                           data-max-date="'2015-01-01'"/>
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="vm.openEndDate($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </p>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <div id="dashboard-ajax-content">
+
+                    <ul class="simple-tab">
+                        <li class="tab active" data-content="#tab-views" data-ng-click="vm.switchType(vm.model.eType.views)">
+                            <span>Views:</span>
+                            <span class="total">42,208</span>
+                            <span class="status {{vm.model.trending.views.increase >= 0 ? 'green' : 'red'}}">
+                                <i class="icon {{vm.model.trending.views.increase >= 0 ? 'icon-arrow-green' : 'icon-arrow-red'}} "></i>
+                                {{Math.abs(vm.model.trending.views.increase)}} ({{Math.abs(vm.model.trending.views.increasePercent)}}%)
+                            </span>
+                        </li><li class="tab" data-content="#tab-tags" data-ng-click="vm.switchType(vm.model.eType.tags)"> <!-- hack to fix inline-block bug -->
+                            <span>Tags:</span>
+                            <span class="total">17</span>
+                            <span class="status {{vm.model.trending.tags.increase >= 0 ? 'green' : 'red'}}">
+                                <i class="icon {{vm.model.trending.tags.increase >= 0 ? 'icon-arrow-green' : 'icon-arrow-red'}} "></i>
+                                {{Math.abs(vm.model.trending.tags.increase)}} ({{Math.abs(vm.model.trending.tags.increasePercent)}}%)
+                            </span>
+                        </li><li class="tab" data-content="#tab-desires" data-ng-click="vm.switchType(vm.model.eType.desires)">
+                            <span>Desires:</span>
+                            <span class="total">3,208</span>
+                            <span class="status {{vm.model.trending.desires.increase >= 0 ? 'green' : 'red'}}">
+                                <i class="icon {{vm.model.trending.desires.increase >= 0 ? 'icon-arrow-green' : 'icon-arrow-red'}} "></i>
+                                {{Math.abs(vm.model.trending.desires.increase)}} ({{Math.abs(vm.model.trending.desires.increasePercent)}}%)
+                            </span>
+                        </li><li class="tab" data-content="#tab-orders" data-ng-click="vm.switchType(vm.model.eType.orders)">
+                            <span>Orders:</span>
+                            <span class="total">419</span>
+                            <span class="status {{vm.model.trending.orders.increase >= 0 ? 'green' : 'red'}}">
+                                <i class="icon {{vm.model.trending.orders.increase >= 0 ? 'icon-arrow-green' : 'icon-arrow-red'}} "></i>
+                                {{Math.abs(vm.model.trending.orders.increase)}} ({{Math.abs(vm.model.trending.orders.increasePercent)}}%)
+                            </span>
+                        </li><li class="tab" data-content="#tab-sales" data-ng-click="vm.switchType(vm.model.eType.sales)">
+                            <span>Sales:</span>
+                            <span class="total">$432,085</span>
+                            <span class="status {{vm.model.trending.sales.increase >= 0 ? 'green' : 'red'}}">
+                                <i class="icon {{vm.model.trending.sales.increase >= 0 ? 'icon-arrow-green' : 'icon-arrow-red'}} "></i>
+                                {{Math.abs(vm.model.trending.sales.increase)}} ({{Math.abs(vm.model.trending.sales.increasePercent)}}%)
+                            </span>
+                        </li><li class="map-toggler">
+                            <a class="icon icon-chart active" data-content=".map-1" data-ng-click="vm.switchChart(vm.model.eChart.area)"></a>
+                            <a class="icon icon-globe" data-content=".map-2" data-ng-click="vm.switchChart(vm.model.eChart.geo)"></a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-container">
+                        <div id="tab-views" class="tab-content active">
+                            <div class="map active {{vm.model.selectedChart === vm.model.eChart.geo ? 'row map-2' : 'map-1'}}">
+                                <div class="{{vm.model.selectedChart === vm.model.eChart.geo ? 'col-md-9' : ''}}">
+                                    <div class="place-holder">
+                                        <div data-google-chart data-chart="vm.model.chart" data-ng-if="vm.model.hasData()" >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3" data-ng-show="vm.model.selectedChart === vm.model.eChart.geo">
+                                    <div class="legend">
+                                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <thead>
+                                                <tr>
+                                                    <th width="60%">Country / Territory</th>
+                                                    <th width="40%">{{vm.getTypeString()}}</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-if="vm.model.topCountries && vm.model.selectedChart === vm.model.eChart.geo"
+                                                    ng-repeat="(key, country) in vm.model.topCountries" >
+                                                    <td><strong>{{key + 1}}.</strong> {{country.CountryName}}</td>
+                                                    <td>{{country.Value}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div><!--#END .tab-container-->
+
+                </div><!--#END .dashboard-ajax-content-->
+
+            </div>
+
+        </div><!--END .main-wrapper-->
+
+    </div>
+    <!--#END .container -->
+
+    <div class="container transparent">
+        <div class="widget-bottom">
+            <div class="row">
+
+                <div class="col-md-4">
+                    <div class="widget-item">
+                        <div class="page-title">
+                            <h2>Best sellers</h2>
+                        </div>
+                        <div class="product-image">
+                            <img src="/assets/images/widget-bottom-product.jpg" width="73" height="73" alt="sample product">
+                        </div>
+                        <div class="product-detail">
+                            <p>Lorem ipsum dolor site amet, consectetuer</p>
+                            <span class="quantity">67 sales</span>
+                            <span class="status green"><i class="icon icon-arrow-green"></i>12.5%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="widget-item">
+                        <div class="page-title">
+                            <h2>Inventory</h2>
+                        </div>
+                        <div class="product-image">
+                            <img src="/assets/images/widget-bottom-product.jpg" width="73" height="73" alt="sample product">
+                        </div>
+                        <div class="product-detail">
+                            <p>Lorem ipsum dolor site amet, consectetuer</p>
+                            <span class="quantity">3 left</span>
+                            <span class="status red">last sale: 6 hrs ago</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="widget-item">
+                        <div class="page-title">
+                            <h2>Promotions</h2>
+                        </div>
+                        <div class="product-image">
+                            <img src="/assets/images/widget-bottom-product.jpg" width="73" height="73" alt="sample product">
+                        </div>
+                        <div class="product-detail">
+                            <p>Lorem ipsum dolor site amet, consectetuer</p>
+                            <span class="quantity">102 engaged</span>
+                            <span class="status green"><i class="icon icon-arrow-green"></i>163%</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--#END .container -->
+
+</div>
+
+<script>
+    $(document).ready(function(){
+
+        //=== DASHBOARD SECTION ===//
+        //emulate ajax event
+        $('.calendar li:lt(4) a').click(function(e){
+            e.preventDefault();
+            var $parent = $(this).parent();
+            $parent.addClass('active').siblings().removeClass('active');
+            // $('#dashboard-ajax-content').html('<div class="place-holder"><p>AJAX Content</p></div>');
+        });
+
+        //toggle simple tab
+        $('.simple-tab .tab').click(function(e){
+            e.preventDefault();
+            var $tab = $(this).data('content');
+            $(this).addClass('active').siblings().removeClass('active');
+            $($tab).addClass('active').siblings().removeClass('active');
+        });
+
+        //toggle map
+        $('.map-toggler .icon').click(function(e){
+            e.preventDefault();
+            var $map = $(this).data('content');
+            $(this).addClass('active').siblings().removeClass('active');
+            $($map).addClass('active').siblings().removeClass('active');
+        });
+        //=== DASHBOARD SECTION ===//
+    });
+
+
+    // Param
+    $.urlParam = function(name){
+        var results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);
+        if (!results) { return 0; }
+        return results[1] || 0;
+    };
+
+    // Manual close colorbox
+    function sprClose(){
+        $.colorbox.close()
+    }
+    // CSS3 Animation Events
+    var animationStart = 'animationstart webkitAnimationStart oanimationstart MSAnimationStart';
+    var animationEnd = 'animationend webkitAnimationEnd oanimationend MSAnimationEnd';
+    var ori;
+
+    // Orientation Change Detect
+    function sprOrientation() {
+        var w = $(window).width();
+        var h = $(window).height();
+        o = (w > h) ? "h" : "v";
+    }
+    // Window Resize
+    $(function() {
+        var timer_id;
+        $(window).resize(function() {
+            clearTimeout(timer_id);
+            timer_id = setTimeout(function() {
+                sprOrientation();
+            }, 300);
+        });
+    });
+    // Loader
+    function sprLoader(){
+
+    }
+</script>

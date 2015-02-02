@@ -1,0 +1,58 @@
+﻿<div class="modal-content-wrap modal-form modal-small modal-brand" data-ng-controller="homeBrandController as vm">
+    <form angular-validator-submit="" name="form" novalidate angular-validator>
+        <div class="modal-header">
+            <h3 class="modal-title icon-break"><i class="icon icon-32 icon-brand"></i><span class="text">Your brand details</span></h3>
+        </div>
+        <div class="modal-body">
+            <div class="form-wrap">
+                <div class="item item-half">
+                    <label for="merchant-domain" class="block">Your Merchant Showroom Domain<span class="required">*</span></label>
+                    <div class="input-wrap">
+                        <input class="form-control form-control-inline"
+                               type="text"
+                               autocomplete="off"
+                               name="StorefrontDomain"
+                               ng-model="vm.model.data.StorefrontDomain"
+                               validate-on="dirty"
+                               validator="vm.model.validator().StorefrontDomain(vm.model.data.StorefrontDomain) === true"
+                               invalid-message="vm.model.validator().StorefrontDomain(vm.model.data.StorefrontDomain)">
+                        <span class="subtext">.buydesire.com</span>                                                
+                    </div>
+                    <div class="error" data-ng-show="vm.FailureStorefrontDomain">{{vm.MessagesStorefrontDomain}}</div>
+                </div>
+                <div class="item item-full">
+                    <label for="merchant-des" class="block">Tagline<span class="required">*</span></label>
+                    <div class="input-wrap">
+                        <input class="form-control"
+                               type="text"
+                               autocomplete="off"
+                               name="Tagline"
+                               ng-model="vm.model.data.Tagline"
+                               validate-on="dirty"
+                               validator="vm.model.validator().Tagline(vm.model.data.Tagline) === true"
+                               invalid-message="vm.model.validator().Tagline(vm.model.data.Tagline)">
+                    </div>
+                </div>
+                <div class="item item-full">
+                    <label for="merchant-about" class="block">About your brand<span class="required">*</span></label>
+                    <div class="input-wrap">
+                        <textarea class="form-control"
+                                  placeholder="Maximum 255 chars"
+                                  name="Description"
+                                  ng-model="vm.model.data.Description"
+                                  validate-on="dirty"
+                                  validator="vm.model.validator().Description(vm.model.data.Description) === true"
+                                  invalid-message="vm.model.validator().Description(vm.model.data.Description)" />
+                        </textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn" data-ng-click="vm.btnCancelClicked()">Cancel</button>
+            <button ng-disabled="form.$invalid" class="btn btn-primary" data-ng-click="vm.btnSaveClicked()">Save</button>
+        </div>
+        <a href="" class="btn-close" data-ng-click="vm.btnCancelClicked()"></a>
+    </form>
+</div>
+<div class="position"></div>

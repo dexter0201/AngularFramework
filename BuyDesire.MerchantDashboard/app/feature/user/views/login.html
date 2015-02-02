@@ -1,0 +1,70 @@
+﻿<div class="page-sign">
+    <div class="background">
+    </div>
+    <div class="container">
+        <div class="form form-signin col-md-6 center-block" data-ng-controller="loginController as vm">
+            <div class="modal-dialog">
+                <div class="modal-content row">
+                    <div class="modal-content-wrap modal-form">
+                        <form angular-validator-submit="" name="form" novalidate angular-validator>
+                            <div class="modal-header">
+                                <h3 class="modal-title"><span class="text">Merchant Sign In</span></h3>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-wrap">
+                                    <div class="item item-border">
+                                        <div class="item item-full">
+                                            <label for="store-username" class="block">Username</label>
+                                            <div class="input-wrap">
+                                                <input class="form-control"
+                                                       type="text"
+                                                       autocomplete="on"
+                                                       placeholder="Your Merchant username"
+                                                       name="UserName"
+                                                       ng-model="vm.model.UserName"
+                                                       validate-on="dirty"
+                                                       validator="vm.model.validator().UserName(vm.model.UserName) === true"
+                                                       invalid-message="vm.model.validator().UserName(vm.model.UserName)">
+
+                                            </div>
+                                        </div>
+                                        <div class="item item-full">
+                                            <label for="store-password" class="block">Password</label>
+                                            <div class="input-wrap">
+                                                <input class="form-control"
+                                                       type="password"
+                                                       placeholder="Your Password"
+                                                       name="Password"
+                                                       ng-model="vm.model.Password"
+                                                       validate-on="dirty"
+                                                       validator="vm.model.validator().Password(vm.model.Password) === true"
+                                                       invalid-message="vm.model.validator().Password(vm.model.Password)">
+                                            </div>
+                                            <div class="error" data-ng-show="vm.failure">{{vm.Messages}}</div>
+                                        </div>
+                                        <div class="item item-full clearfix">
+                                            <div class="item item-inline">
+                                                <div class="input-wrap">
+                                                    <input type="checkbox" data-ng-model="vm.model.Remember" id="signin-remember"/>
+                                                    <label for="signin-remember">Remember me</label>
+                                                </div>
+                                            </div>
+                                            <div class="item item-inline">
+                                                <p><a href="#/user/forgot-password">Forgot your password?</a></p>
+                                                <br />
+                                                <p><a href="#/user/register">Register new account</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-primary" ng-disabled="form.$invalid" data-ng-click="vm.btnSubmitClicked()">Sign In</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+﻿<div class="modal-content-wrap modal-form modal-medium modal-location-import" data-ng-controller="productImportCSVController as vm">
+    <form>
+        <div class="modal-header">
+            <h3 class="modal-title icon-break"><span class="text">Import product CSV</span></h3>
+        </div>
+        <div class="modal-body">
+            <div class="form-wrap">
+                <div class="import clearfix">
+                    <div class="hint">
+                        <p>You can upload a CSV file to import product or download and view a sample location<br />CSV file. You can use this as a template for creating your CSV file. Just remember to remove</br>the example locations.</p>
+                    </div>
+                    <div class="input-wrap input-inline input-upload clearfix">
+                        <div class="upload-button">
+                            <button class="btn icon-inline"><span class="text">Choose file</span></button>
+                            <input type="file" ng-file-select="vm.btnUpload($files)" />
+                            <div class="error" data-ng-if="vm.model.showError">
+                                <div class="text"><span>Whoops!</span> You haven’t chosen a file to upload yet</div>
+                                <div class="arrow"></div>
+                            </div>
+                            <div class="error" data-ng-if="vm.model.invalidFile">
+                                <div class="text"><span>Whoops!</span> Please choose valid CSV file</div>
+                                <div class="arrow"></div>
+                            </div>
+                        </div>
+                        <div class="input-progress">
+                            <div class="bar-wrap">
+                                <span class="filename" data-ng-if="!vm.model.inprogress">{{vm.model.fileName}}</span>
+                            </div>
+                            <div class="bar-progress">
+                                <bd-progress-bar data-ng-if="vm.model.inprogress"
+                                                 data-value="vm.model.successPercent"
+                                                 data-failure-percent="vm.model.failurePercent"></bd-progress-bar>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer clearfix">
+            <div class="buttons-left">
+                <button class="btn" data-ng-click="vm.btnPreviewClicked()"><i class="icon icon-12 icon-view icon-middle"></i><span class="text">Preview sample CSV</span></button>
+                <button class="btn" data-ng-click="vm.btnDownloadClicked()">Download CSV template</button>
+            </div>
+            <button class="btn btn-primary" data-ng-click="vm.btnSaveClicked()"><i class="icon icon-12 icon-upload-white icon-middle"></i><span class="text">Upload</span></button>
+        </div>
+        <a href="" class="btn-close" data-ng-click="vm.btnCancelClicked()"></a>
+    </form>
+</div>
+<div class="position"></div>

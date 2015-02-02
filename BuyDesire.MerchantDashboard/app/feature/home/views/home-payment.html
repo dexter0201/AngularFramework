@@ -1,0 +1,137 @@
+﻿<div class="modal-content-wrap modal-form modal-large modal-payment" data-ng-controller="homePaymentController as vm">
+    <form angular-validator-submit="" name="form" novalidate angular-validator>
+        <div class="modal-header">
+            <h3 class="modal-title icon-break"><i class="icon icon-32 icon-payment"></i><span class="text">Enter your payment details</span></h3>
+        </div>
+        <div class="modal-body">
+            <div class="form-wrap">
+                <div class="item item-border item-col">
+                    <div class="col col-left">
+                        <h3>Address details</h3>
+                        <p class="des">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis. </p>
+                    </div>
+                    <div class="col col-right">
+                        <div class="item item-half">
+                            <label for="payment-address1" class="block">Address line 1<span class="required">*</span></label>
+                            <div class="input-wrap">
+                                <input class="form-control"
+                                    type="text" name="Address1" data-ng-model="vm.model.data.Address1"
+                                    validate-on="dirty"
+                                    validator="vm.model.validator().Address1(vm.model.data.Address1) === true"
+                                    invalid-message="vm.model.validator().Address1(vm.model.data.Address1)" />
+                            </div>
+                        </div>
+                        <div class="item item-half">
+                            <label for="payment-address2" class="block">Address line 2</label>
+                            <div class="input-wrap">
+                                <input type="text" name="Address2" data-ng-model="vm.model.data.Address2" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="item item-half">
+                            <label for="payment-country" class="block">Country<span class="required">*</span></label>
+                            <div class="input-wrap">
+                                <select id="payment-country" name="payment-country" data-ng-model="vm.model.data.CountryID" class="form-control">
+                                    <option ng-repeat="country in vm.model.countries" value="{{country.CountryID}}">{{country.Name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="item item-half">
+                            <label for="payment-state" class="block">State<span class="required">*</span></label>
+                            <div class="input-wrap">
+                                <input class="form-control"
+                                    type="text" name="StateName" data-ng-model="vm.model.data.StateName"
+                                    validate-on="dirty"
+                                    validator="vm.model.validator().StateName(vm.model.data.StateName) === true"
+                                    invalid-message="vm.model.validator().StateName(vm.model.data.StateName)" />
+                            </div>
+                        </div>
+                        <div class="item item-half">
+                            <label for="payment-city" class="block">City<span class="required">*</span></label>
+                            <div class="input-wrap">
+                                <input class="form-control" type="text" name="City" data-ng-model="vm.model.data.City"
+                                    validate-on="dirty"
+                                    validator="vm.model.validator().City(vm.model.data.City) === true"
+                                    invalid-message="vm.model.validator().City(vm.model.data.City)" />
+                            </div>
+                        </div>
+                        <div class="item item-half">
+                            <label for="payment-postal" class="block">Postal code<span class="required">*</span></label>
+                            <div class="input-wrap">
+                                <input class="form-control" type="text" name="PostCode" data-ng-model="vm.model.data.PostCode"
+                                    validate-on="dirty"
+                                    validator="vm.model.validator().PostCode(vm.model.data.PostCode) === true"
+                                    invalid-message="vm.model.validator().PostCode(vm.model.data.PostCode)" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item item-border item-col">
+                    <div class="col col-left">
+                        <h3>Preferred payout method</h3>
+                        <p class="des">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis.</p>
+                    </div>
+                    <div class="col col-right">
+                        <table cellpadding="0" cellspacing="0" id="payment-payout">
+                            <tbody>
+                                <tr>
+                                    <td>Method</td>
+                                    <td>Arrvies On*</td>
+                                    <td>Fees</td>
+                                    <td>Currency</td>
+                                    <td>Details</td>
+                                </tr>
+                                <tr data-ng-repeat="paymentMethod in vm.model.paymentMethods">
+                                    <td>
+                                        <input type="radio" id="payout-{{paymentMethod.PayoutMethodID}}" value="{{paymentMethod.PayoutMethodID}}" name="payment-choice" data-ng-model="vm.model.data.PreferredPaymentMethodID" />
+                                        <label for="payout-{{paymentMethod.PayoutMethodID}}"><i></i><span class="text">{{paymentMethod.Method}}</span></label>
+                                    </td>
+                                    <td>{{paymentMethod.ArrivesOn}}</td>
+                                    <td>{{paymentMethod.Fees}}</td>
+                                    <td>{{paymentMethod.Currency}}</td>
+                                    <td>{{paymentMethod.Details}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="payment-choices">
+                            <div class="choice choice-paypal {{vm.getMethodChoosen(1)}}">
+                                <h3>
+                                    <img src="/assets/images/logo-paypal.png" alt="Paypal" border="" /></h3>
+                                <p class="hint">PayPal is an online payment processing service that allows you to receive<br />
+                                    payments from Airbnb. To use PayPal with Airbnb, you must have an existing<br />
+                                    account with PayPal. <a href="#" target="_blank">Learn more about Paypal.</a></p>
+                                <div class="item item-half">
+                                    <label for="paypal-email" class="block">Email address associated with your existing PayPal account:</label>
+                                    <div class="input-wrap">
+                                        <input class="form-control" type="text" id="paypal-email" name="PayPalEmailAddress"
+                                            data-ng-model="vm.model.data.PayPalEmailAddress" 
+                                            validate-on="dirty"
+                                            validator="vm.model.validator().PayPalEmailAddress(vm.model.data.PayPalEmailAddress) === true"
+                                            invalid-message="vm.model.validator().PayPalEmailAddress(vm.model.data.PayPalEmailAddress)" />
+                                    </div>
+                                </div>
+                                <div class="item item-half">
+                                    <label for="paypal-currency" class="block">In what currency would you like to be paid?</label>
+                                    <div class="input-wrap">
+                                        <select id="paypal-currency" name="paypal-currency" data-ng-model="vm.model.data.BaseCurrencyCode" class="form-control">
+                                            <option ng-repeat="currency in vm.model.currencies">{{currency.CurrencyCode}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="choice choice-bank {{vm.getMethodChoosen(2)}}">
+                                <p class="hint">By clicking below, you will be directed to another website where you may securely enter your banking details. After completing the requested information you will be redirected back to BuyDesire. Here are some tips you should know when entering your information.</p>
+                                <a href="#" class="btn btn-primary">Securely enter banking details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn" data-ng-click="vm.btnCancelClicked()">Cancel</button>
+            <button ng-disabled="form.$invalid" class="btn btn-primary" data-ng-click="vm.btnSaveClicked()">Save</button>
+        </div>
+        <a href="" class="btn-close" data-ng-click="vm.btnCancelClicked()"></a>
+    </form>
+</div>
+<div class="position"></div>

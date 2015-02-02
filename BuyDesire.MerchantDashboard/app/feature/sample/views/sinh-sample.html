@@ -1,0 +1,35 @@
+﻿<div class="page-locations">
+    <div class="background">
+    </div>
+    <div class="container">
+        <div class="main-wrapper clearfix modal-form" data-ng-controller="sinhSampleController as vm">
+            <div class="div_test">
+                <a href="" class="btn btn-primary" data-ng-click="vm.switchTime(0)">Daily</a> &nbsp;&nbsp;
+                <a href="" class="btn btn-primary" data-ng-click="vm.switchTime(1)">Weekly</a> &nbsp;&nbsp;
+                <a href="" class="btn btn-primary" data-ng-click="vm.switchTime(2)">Monthly</a> &nbsp;&nbsp;
+                <a href="" class="btn btn-primary" data-ng-click="vm.switchTime(2)">Specific dates</a> &nbsp;&nbsp;
+                <div class="floatR">
+                    <a href="" class="btn btn-primary" data-ng-click="vm.switchChart(0)">Trending</a> &nbsp;&nbsp;
+                    <a href="" class="btn btn-primary" data-ng-click="vm.switchChart(1)">Geo</a>&nbsp;&nbsp;
+                    <a href="" class="btn btn-primary" data-ng-click="vm.switchChart(2)">Geo (*)</a>&nbsp;&nbsp;
+                </div>
+            </div>
+            <div class="div_test">
+                <ul class="nav nav-pills">
+                    <li class="active"><a href="" data-ng-click="vm.switchType(0)">Views<span class="badge">30 (4%)</span></a></li>
+                    <li class="active"><a href="" data-ng-click="vm.switchType(1)">Tags<span class="badge">3859 (45%)</span></a></li>
+                    <li class="active"><a href="" data-ng-click="vm.switchType(2)">Desires<span class="badge">2837 (500%)</span></a></li>
+                    <li class="active"><a href="" data-ng-click="vm.switchType(3)">Orders<span class="badge">3402 (43%)</span></a></li>
+                    <li class="active"><a href="" data-ng-click="vm.switchType(4)">Sales<span class="badge">1234 (342%)</span></a></li>
+                </ul>
+            </div>
+            <div>
+                <div data-google-chart data-chart="vm.model.chartSetting"/>
+            </div>
+        </div>
+    </div>
+</div>
+<style type="text/css">
+    .div_test { margin: 10px auto; }
+    .floatR { float: right; }
+</style>

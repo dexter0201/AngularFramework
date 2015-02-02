@@ -1,0 +1,53 @@
+﻿<div class="modal-content-wrap modal-form modal-small modal-contact" data-ng-controller="homeContactController as vm">
+    <form novalidate name="homeContactForm" novalidate angular-validator angular-validator-submit="">
+        <div class="modal-header">
+            <h3 class="modal-title icon-break"><i class="icon icon-32 icon-contact"></i><span class="text">Your contact details</span></h3>
+        </div>
+        <div class="modal-body">
+            <div class="form-wrap">
+                <div class="item item-full">
+                    <label for="merchant-email" class="block">Email address<span class="required">*</span>:</label>
+                    <div class="input-wrap">
+                        <input class="form-control"
+                               type="text"
+                               data-ng-model="vm.model.data.EmailAddress"
+                               name="EmailAddress"
+                               validate-on="dirty"
+                               validator="vm.model.validator().EmailAddress(vm.model.data.EmailAddress) === true"
+                               invalid-message="vm.model.validator().EmailAddress(vm.model.data.EmailAddress)">
+                    </div>
+                </div>
+                <div class="item item-full">
+                    <label for="merchant-web" class="block">Website<span class="required">*</span>:</label>
+                    <div class="input-wrap">
+                        <input class="form-control"
+                               type="text"
+                               data-ng-model="vm.model.data.WebsiteURL" placeholder="http://"
+                               name="WebsiteURL"
+                               validate-on="dirty"
+                               validator="vm.model.validator().WebsiteURL(vm.model.data.WebsiteURL) === true"
+                               invalid-message="vm.model.validator().WebsiteURL(vm.model.data.WebsiteURL)">
+                    </div>
+                </div>
+                <div class="item item-full">
+                    <label for="merchant-tele" class="block">Telephone<span class="required">*</span>:</label>
+                    <div class="input-wrap">
+                        <input class="form-control"
+                               type="text"
+                               data-ng-model="vm.model.data.PhoneNumber"
+                               name="PhoneNumber"
+                               validate-on="dirty"
+                               validator="vm.model.validator().PhoneNumber(vm.model.data.PhoneNumber) === true"
+                               invalid-message="vm.model.validator().PhoneNumber(vm.model.data.PhoneNumber)">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn" data-ng-click="vm.btnCancelClicked()">Cancel</button>
+            <button class="btn btn-primary" ng-disabled="homeContactForm.$invalid" data-ng-click="vm.btnSaveClicked()">Save</button>
+        </div>
+        <a href="" class="btn-close" data-ng-click="vm.btnCancelClicked()"></a>
+    </form>
+</div>
+<div class="position"></div>

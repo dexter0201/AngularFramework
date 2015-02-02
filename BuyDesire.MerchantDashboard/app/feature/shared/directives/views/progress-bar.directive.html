@@ -1,0 +1,10 @@
+﻿<div class="progress active"><!--progress-striped--> 
+    <div class="progress-bar progress-bar-success">
+        <span data-ng-show="value >= 0">
+        	<strong>{{value}}%</strong>
+        </span>
+    </div>
+    <div class="progress-bar progress-bar-danger" data-ng-if="failurePercent >= 0" style="width: {{failurePercent + '%'}}">
+        <span data-ng-show="failurePercent >= 0"></strong>{{failurePercent}}%</strong></span>
+    </div>
+</div>

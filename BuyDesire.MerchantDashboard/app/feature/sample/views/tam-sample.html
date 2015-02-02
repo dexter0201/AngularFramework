@@ -1,0 +1,40 @@
+﻿<div data-ng-controller="tamSampleController as vm">
+    <form name="tamForm" novalidate>
+        <div validate-summary>
+            Email: <br />
+            <input type="email" name="email" ng-model="vm.model.Email" required />
+            <!--Validate Message-->
+            <!--<span style="color:red" ng-show="tamForm.Email.$error.required">&#10008; Tell us your email.</span>
+            <span style="color:red" ng-show="tamForm.Email.$error.email">&#10008;This is not a valid email.</span>
+            <span style="color:green" ng-show="!tamForm.Email.$invalid">&#10004; Ok!</span>-->
+        </div>
+        <br />
+        <div validate-summary>
+            Name(6-20 characters): <br />
+            <input type="text" ng-minlength="6" ng-maxlength="20" name="name" ng-pattern="/^((?!(demo))(?!(test))(?!(admin)).)*$/" ng-model="vm.model.Name" existed-validate required />
+            <!--Validate Message-->
+            <!--<span style="color:red" ng-show="tamForm.Name.$error.required">&#10008; Tell us your name.</span>
+            <span style="color:red" ng-show="tamForm.Name.$error.minlength || tamForm.Name.$error.maxlength">&#10008; The name characters must be in range 6 to 20</span>
+            <span style="color:red" ng-show="tamForm.Name.$error.existed">&#10008; This name is existed.</span>
+            <span style="color:red" ng-show="tamForm.Name.$error.pattern">&#10008; This name contain black-list words.</span>
+            <span style="color:green" ng-show="!tamForm.Name.$invalid">&#10004; Your name is beautiful!</span>-->
+            
+        </div>
+
+        <br />
+        <div validate-summary>
+            Telephone(10-11 characters): <br />
+            <input type="text" name="telephone" ng-model="vm.model.Telephone" required ng-pattern="/[0-9]{10,11}/" />
+            <!--<span style="color:red" ng-show="tamForm.Telephone.$error.required">&#10008; Tell us your telephone.</span>
+            <span style="color:red" ng-show="tamForm.Telephone.$error.pattern">&#10008; The phone number is invalid.</span>
+            <span style="color:green" ng-show="!tamForm.Telephone.$invalid">&#10004; Your telephone is so cool</span>-->
+            
+        </div>
+        <br />
+        <div>
+            <button class="btn btn-primary floatR" type="button" ng-disabled="tamForm.$invalid" ng-click="vm.btnSaveClicked()">Save</button>
+        </div>
+    </form>
+    <br />
+    <debug data-name="vm.model" data-type="vm.model.getType()" data-value="vm.model"></debug>
+</div>

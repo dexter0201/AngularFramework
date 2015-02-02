@@ -1,0 +1,147 @@
+﻿<header class="header" data-ng-controller="headerController as vm">
+    <a href="#" class="logo"><img src="/assets/images/logo.png" alt=""/></a>
+    <nav class="main-nav" data-ng-show="!vm.currentUser.isNull()">
+        <div class="navbar-header">
+            <button type="button" class="nav-responsive" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed" data-toggle="collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <ul class="collapse navbar-collapse" ng-class="!navCollapsed && 'in'" ng-click="navCollapsed=true">
+            <li data-ng-repeat="item in vm.model.items" class="{{vm.model.currentItem === item.index ? 'current': ''}}" ng-click="vm.setCurrentItem(item.index)">
+                <a ng-if="item.url && !item.badge" href="{{item.url}}">{{item.title}}</a>
+                <div class="dropdown" ng-if="!(item.url && !item.badge)">
+                    <a href="" class="has-noti dropdown-toggle">
+                        {{item.title}}
+                        <span class="notification active" data-ng-show="{{item.badge}}">{{item.badge}}</span>
+                    </a>
+                    <div class="line"></div>
+
+                    <div class="dropdown-menu panel" role="menu" data-ng-show="{{item.badge}}">
+                        <div class="panel-block panel-header">
+                            <p>
+                                <span class="number">
+                                    <b>{{item.badge}}</b>
+                                </span>
+                                <span ng-show="vm.model.currentItem === vm.model.items.Products.index"> tags require validation</span>
+                                <span ng-show="vm.model.currentItem === vm.model.items.Orders.index"> orders require fulfilling</span>
+                            </p>
+                        </div>
+                        <!-- list products notification -->
+                        <div id="productPanelBody" class="panel-block panel-body" ng-show="vm.model.currentItem === vm.model.items.Products.index">
+                            <div class="item clearfix" data-ng-if="item.list" data-ng-repeat="notification in item.list">
+                                <div class="alt">
+                                    <a data-ng-if="notification">
+                                        <img ng-src="{{notification.MediumImage}}" alt="" border="" />
+                                    </a>
+                                </div>
+                                <div class="details" data-ng-if="notification">
+                                    <div class="clearfix">
+                                        <div class="avatar">
+                                            <a><img ng-src="{{notification.ProfileImage}}" alt="" border="" /></a>
+                                        </div>
+                                        <div class="info">
+                                            <h5><a href="">{{notification.UserName}}</a> tagged</h5>
+                                            <p><a href="">{{notification.ProductVariantName}}</a></p>
+                                            <p>
+                                                <span class="time">
+                                                    <span ng-show="notification.CreatedOn !== 0">{{notification.CreatedOn}} </span>
+                                                    <span ng-show="notification.CreatedOn > 1">days ago</span>
+                                                    <span ng-show="notification.CreatedOn === 1">day ago</span>
+                                                    <span ng-show="notification.CreatedOn === 0">today</span>
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- list orders notification -->
+                        <div id="orderPanelBody" class="panel-block panel-body" ng-show="vm.model.currentItem === vm.model.items.Orders.index">
+                            <div class="item clearfix" ng-if="item.list" ng-repeat="orderNoti in item.list">
+                                <div class="alt">
+                                    <button class="btn btn-primary" ng-click="vm.openOrderDetailsModal(orderNoti.OrderNumber)">Review</button>
+                                </div>
+                                <div class="details">
+                                    <div class="clearfix">
+                                        <div class="avatar">
+                                            <a href=""><img ng-src="{{orderNoti.ProfileImage}}" alt="" border="" /></a>
+                                        </div>
+                                        <div class="info">
+                                            <h5><a href="">{{orderNoti.FullName}}</a></h5>
+                                            <p>
+                                                ordered <b>{{orderNoti.Total}}</b> items 
+                                                <!-- from <b>Australia</b> -->
+                                            </p>
+                                            <p>
+                                                <span class="time">
+                                                    <span ng-show="orderNoti.OrderAgo !== 0">{{orderNoti.OrderAgo}} </span>
+                                                    <span ng-show="orderNoti.OrderAgo > 1">days ago</span>
+                                                    <span ng-show="orderNoti.OrderAgo === 1">day ago</span>
+                                                    <span ng-show="orderNoti.OrderAgo === 0">today</span>
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel-block panel-footer" ng-show="vm.model.currentItem === vm.model.items.Products.index"
+                             cg-busy="{promise:vm.promise,message:'',backdrop:true,delay:0,minDuration:0}">
+                            <a href="" data-ng-click="vm.viewAllClick()" ng-show="!vm.model.cbBusyFulfilled">
+                                Review all {{item.badge}} tags
+                            </a>
+                            <a href="#/product/products" ng-show="vm.model.cbBusyFulfilled">
+                                Add new product
+                            </a>
+                        </div>
+
+                        <div class="panel-block panel-footer" ng-show="vm.model.currentItem === vm.model.items.Orders.index">
+                            <a href="#/order/orders">Review all {{item.badge}} orders</a>
+                        </div>
+                    </div>
+
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <div class="users dropdown" data-ng-show="!vm.currentUser.isNull()">
+        <a href="" class="has-arrow dropdown-toggle"><strong>{{vm.currentUser.UserName}}<i class="arrow"></i></strong></a>
+        <div class="line"></div>
+        <div class="dropdown-menu" role="menu">
+            <div class="dropdown-wrap">
+                <div class="section">
+                    <h4>Shop</h4>
+                    <ul>
+                        <li><a href="">View Merchant Showroom</a></li>
+                    </ul>
+                </div>
+                <div class="section">
+                    <h4>Settings</h4>
+                    <ul>
+                        <li><a href="">General</a></li>
+                        <li><a href="">Shipping</a></li>
+                        <li><a href="">Payout preferences</a></li>
+                    </ul>
+                </div>
+                <div class="section">
+                    <ul>
+                        <li><a href="">Help</a></li>
+                        <li><a href="" data-ng-click="vm.btnSignOutClicked()">Sign Out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<script>   
+    $('body').delegate('.dropdown-menu' ,'click', function (e) {
+        e.stopPropagation();
+    });
+</script>

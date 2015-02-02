@@ -1,0 +1,134 @@
+﻿<div class="modal-content-wrap modal-form modal-large modal-payment" data-ng-controller="homePaymentPaypalController as vm">
+    <form>
+        <div class="modal-header">
+            <h3 class="modal-title icon-break"><i class="icon icon-32 icon-payment"></i><span class="text">Enter your payment details</span></h3>
+        </div>
+        <div class="modal-body">
+            <div class="form-wrap">
+                <div class="item item-border item-col">
+                    <div class="col col-left">
+                        <h3>Address details</h3>
+                        <p class="des">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis. </p>
+                    </div>
+                    <div class="col col-right">
+                        <div class="item item-half">
+                            <label for="payment-address1" class="block">Address line 1<span class="required">*</span></label>
+                            <div class="input-wrap">
+                                <input type="text" data-ng-model="vm.model.data.Address1" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="item item-half">
+                            <label for="payment-address2" class="block">Address line 2</label>
+                            <div class="input-wrap">
+                                <input type="text" data-ng-model="vm.model.data.Address2" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="item item-half">
+                            <label for="payment-city" class="block">City<span class="required">*</span></label>
+                            <div class="input-wrap">
+                                <!--<select id="payment-city" name="payment-city">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                </select>-->
+                                <input type="text" data-ng-model="vm.model.data.City" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="item item-half">
+                            <label for="payment-state" class="block">State<span class="required">*</span></label>
+                            <div class="input-wrap">
+                                <input type="text" data-ng-model="vm.model.data.State" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="item item-half">
+                            <label for="payment-postal" class="block">Postal code<span class="required">*</span></label>
+                            <div class="input-wrap">
+                                <input type="text" data-ng-model="vm.model.data.PostCode" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="item item-half">
+                            <label for="payment-country" class="block">Country<span class="required">*</span></label>
+                            <div class="input-wrap">
+                                <select id="payment-country" name="payment-country" class="form-control">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item item-border item-col">
+                    <div class="col col-left">
+                        <h3>Preferred payout method</h3>
+                        <p class="des">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis.</p>
+                    </div>
+                    <div class="col col-right">
+                        <table cellpadding="0" cellspacing="0" id="payment-payout">
+                            <tbody>
+                                <tr>
+                                    <td>Method</td>
+                                    <td>Arrvies On*</td>
+                                    <td>Fees</td>
+                                    <td>Currency</td>
+                                    <td>Details</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="radio" id="payout-1" name="payment-choice" checked />
+                                        <label for="payout-1"><i></i><span class="text">Paypal</span></label>
+                                    </td>
+                                    <td>3-4 hours</td>
+                                    <td>Paypal withdrawal fee</td>
+                                    <td>AUD, USD</td>
+                                    <td>Paypal charges a fee to withdraw money</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="radio" id="payout-2" name="payment-choice" />
+                                        <label for="payout-2"><i></i><span class="text">Bank<br />Transfer</span></label>
+                                    </td>
+                                    <td>5-7 business days except holidays</td>
+                                    <td>None</td>
+                                    <td>AUD</td>
+                                    <td>Supports all banks</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="payment-choices">
+                            <div class="choice choice-paypal active">
+                                <h3><img src="/assets/images/logo-paypal.png" alt="Paypal" border="" /></h3>
+                                <p class="hint">PayPal is an online payment processing service that allows you to receive<br />payments from Airbnb. To use PayPal with Airbnb, you must have an existing<br />account with PayPal. <a href="#" target="_blank">Learn more about Paypal.</a></p>
+                                <div class="item item-half">
+                                    <label for="paypal-email" class="block">Email address associated with your existing PayPal account:</label>
+                                    <div class="input-wrap">
+                                        <input type="text" id="paypal-email" />
+                                    </div>
+                                </div>
+                                <div class="item item-half">
+                                    <label for="paypal-currency" class="block">In what currency would you like to be paid?</label>
+                                    <div class="input-wrap">
+                                        <select id="paypal-currency" name="paypal-currency">
+                                            <option>AUD</option>
+                                            <option>USD</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="choice choice-bank">
+                                <p class="hint">By clicking below, you will be directed to another website where you may securely enter your banking details. After completing the requested information you will be redirected back to BuyDesire. Here are some tips you should know when entering your information.</p>
+                                <a href="#" class="btn btn-primary">Securely enter banking details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn" data-ng-click="vm.btnCancelClicked()">Cancel</button>
+            <button class="btn btn-primary" data-ng-click="vm.btnSaveClicked()">Save</button>
+        </div>
+        <a href="" class="btn-close" data-ng-click="vm.btnCancelClicked()"></a>
+    </form>
+</div>
+<div class="position"></div>

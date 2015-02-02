@@ -1,0 +1,61 @@
+﻿<div class="page-locations">
+    <div class="background">
+    </div>
+    <div class="container">
+        <div class="main-wrapper clearfix" data-ng-controller="locationController as vm"  infinite-scroll="vm.getNextPage()" infinite-scroll-distance="0">
+            <div class="col-md-12">
+                <div class="page-title">
+                    <h2>Locations</h2>
+                    <p>Below are the store locations you have listed</p>
+                </div>
+            </div>
+            <div class="location-list col-md-12">
+                <div class="row">
+                    <!-- <div > -->
+                        <div class="col-md-4" data-ng-repeat="location in vm.model.data">
+                            <div class="item">
+                                <h3>{{ location.Name }}</h3>
+                                <div class="info">
+                                    <div class="head-info">
+                                        <div class="block clearfix address">
+                                            <h4>Address:</h4>
+                                            <p>{{ location.Address }}</p>
+                                        </div>
+                                        <div class="block clearfix open-hours">
+                                            <h4>Opening hours:</h4>
+                                            <p ng-bind-html="vm.trustAsHtml(location.Hours)"></p>
+                                        </div>
+                                        <div class="block clearfix phone">
+                                            <h4>{{ location.PhoneNumber }}</h4>
+                                        </div>
+                                    </div>
+                                    <div class="block clearfix map">
+                                        <ui-gmap-google-map ng-if="location.Center" id="google-map-{{location.RetailerStoreID}}" class=" list-location" center="location.Center" zoom="location.Zoom" draggable="false" options="location.Options" events="vm.events">
+                                        </ui-gmap-google-map>
+                                    </div>
+                                    <div class="block clearfix buttons">
+                                        <button class="btn col-xs-6">View Showroom</button>
+                                        <button class="btn col-xs-6" data-ng-click="vm.editLocationClick(location.RetailerStoreID)">Edit store details</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- single item -->
+                        </div>
+                        <!-- item bootstrap column -->
+                    <!-- </div> End scroll -->
+                    <div class="col-md-4">
+                        <div class="item">
+                            <a href="" class="btn-add" data-ng-click="vm.addLocationClick()">
+                                <i class="icon-plus"></i>
+                                <span class="text">Add Location</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- item bootstrap column -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

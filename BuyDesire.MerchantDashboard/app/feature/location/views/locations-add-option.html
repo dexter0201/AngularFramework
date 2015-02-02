@@ -1,0 +1,41 @@
+<div class="modal" style="display: block;" data-ng-controller="addOptionController as vm">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-content-wrap modal-form modal-medium modal-add-location">
+				<form>
+					<div class="modal-header">
+			            <h3 class="modal-title icon-break"><span class="text">Add location</span></h3>
+			        </div>
+			        <div class="modal-body">
+			           <div class="form-wrap">
+						   <div class="list clearfix">
+								<div class="item item-inline item-half">
+									<div class="icon-wrap">
+										<i class="icon icon-128 icon-location-details"></i>
+									</div>
+									<div class="text">
+										<h3>Enter details</h3>
+										<p>Add a location by entering your<br/>store details, and finding the location<br/>with Google Maps</p>
+									</div>
+									<a href="" class="btn-go" data-ng-click="vm.addLocationDetailClick()"></a>
+								</div>
+								<div class="item item-inline item-half" data-ng-click="vm.btnImportCSVClicked()">
+									<div class="icon-wrap">
+										<i class="icon icon-128 icon-location-import"></i>
+									</div>
+									<div class="text">
+										<h3>Import CSV</h3>
+										<p>Upload a CSV file to import location or<br/>download and view a sample location<br/>CSV file.</p>
+									</div>	
+									<a href="" class="btn-go"></a>
+								</div>
+							</div>
+			           </div>
+			        </div>
+			        <a href="" class="btn-close" data-ng-click="vm.btnCancelClicked()"></a>
+			    </form>
+		    </div>
+		    <div class="position"></div>
+		</div>
+    </div>
+</div>

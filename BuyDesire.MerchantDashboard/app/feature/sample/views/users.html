@@ -1,0 +1,22 @@
+﻿<div class="marginT20" data-ng-controller="usersController as vm">
+    <p>
+        <a href="#user/user-edit" type="button" class="btn btn-primary btn-xs">Create</a>
+        <a href="#user/user-edit/1" type="button" class="btn btn-primary btn-xs">Edit</a>
+    </p>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading bg-primary-1">
+            <h3 class="panel-title white">Directive</h3>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-lg-3 col-xs-6" data-ng-repeat="user in vm.model.users">
+                    <div data-user-profile data-source="user" data-on-click="onClick(user.ID)"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <debug data-name="vm.model" data-type="vm.model.getType()" data-value="vm.model"></debug>
+</div>
+

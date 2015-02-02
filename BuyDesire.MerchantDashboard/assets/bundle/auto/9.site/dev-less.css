@@ -1,0 +1,10 @@
+/*****************************************
+*		Product Detail Page				 *	
+******************************************/
+.page-product-detail-landing .size-color .title {
+  padding-bottom: 10px;
+}
+.page-product-detail-landing .quantity .title {
+  padding-bottom: 10px;
+  text-align: right;
+}

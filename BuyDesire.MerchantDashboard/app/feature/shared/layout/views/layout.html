@@ -1,0 +1,13 @@
+﻿<div id="wrapper" data-ng-controller="layoutController as vm">
+    <x-ng-include src="vm.model.headerPath()"></x-ng-include>
+    <section data-ng-view class="main page shuffle-animation fix_overflow">
+        <!--<div class="page-sign">
+            <div class="background">
+            </div>
+            <div class="container">
+                <div data-ng-view class="shuffle-animation fix_overflow"></div>
+            </div>
+        </div>-->
+    </section>
+    <ng-include data-ng-if="vm.model.shared().showLoading" src="vm.model.loadingPath()"></ng-include>
+</div>

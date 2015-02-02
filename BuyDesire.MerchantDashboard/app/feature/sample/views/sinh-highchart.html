@@ -1,0 +1,78 @@
+﻿<div class="page-locations">
+    <div class="background">
+    </div>
+    <style>
+        .chart { float: left; width: 50%; height: 400px; }
+    </style>
+    <div class="container">
+        <div class="main-wrapper clearfix">
+            <script type="text/javascript">
+                $(function () {
+                    var data = [{
+                        code: "US",
+                        name: "United State",
+                        z: 28500
+                    }, {
+                        code: "VN",
+                        name: "VietNam",
+                        z: 15710
+                    }, {
+                        code: "AU",
+                        name: "Australia",
+                        z: 19220
+                    }, {
+                        code: "CN",
+                        name: "China",
+                        z: 15000
+                    }];
+
+                    var mapData = Highcharts.geojson(Highcharts.maps['custom/world']);
+                    $('#char-map').highcharts('Map', {
+                        credits: false,
+                        chart: {
+                            //borderWidth: 1
+                        },
+                        title: {
+                            text: 'BuyDesire Desires'
+                        },                        
+                        subtitle: {
+                            //text: 'Number of Views'
+                        },
+                        legend: {
+                            enabled: false
+                        },
+                        mapNavigation: {
+                            enabled: true,
+                            buttonOptions: {
+                                verticalAlign: 'bottom'
+                            }
+                        },
+                        series: [{
+                            name: 'Countries',
+                            mapData: mapData,
+                            color: '#ffb100',
+                            enableMouseTracking: false
+                        }, {
+                            type: 'mapbubble',
+                            mapData: mapData,
+                            name: 'BuyDesire Desires',
+                            joinBy: ['iso-a2', 'code'],
+                            data: data,
+                            minSize: 5,
+                            maxSize: '10%',
+                            tooltip: {
+                                pointFormat: '{point.name}<br/> {point.z} desires'
+                            }
+                        }]
+                    });
+
+                });
+            </script>
+
+
+            <div id="char-map" style="height: 500px; min-width: 310px; max-width: 800px; margin: 0 auto;"></div>
+        </div>
+    </div>
+</div>
+
+

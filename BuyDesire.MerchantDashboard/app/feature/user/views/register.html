@@ -1,0 +1,206 @@
+﻿<div class="page-sign">
+    <div class="background">
+    </div>
+    <div class="container">
+        <div class="form form-signup col-md-8 center-block" data-ng-controller="registerController as vm">
+            <div class="modal-dialog">
+                <div class="modal-content row">
+                    <div class="modal-content-wrap modal-form">
+                        <form angular-validator-submit="" name="form" novalidate angular-validator>
+                            <div class="modal-header">
+                                <a href="#/user/login">
+                                    <button type="button" class="close" data-dismiss="modal">
+                                        <span aria-hidden="true">&times;</span>
+                                        <span class="sr-only">Close</span>
+                                    </button>
+                                </a>
+                                <h3 class="modal-title"><span class="text">Merchant Registration</span></h3>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-wrap">
+                                    <div class="item item-border item-col">
+                                        <div class="col col-left">
+                                            <h3>Merchant details</h3>
+                                        </div>
+                                        <div class="col col-right">
+                                            <div class="item item-full">
+                                                <label for="store-username" class="block">Username<span class="required">*</span></label>
+                                                <div class="input-wrap">
+                                                    <input class="form-control"
+                                                           type="text"
+                                                           autocomplete="off"
+                                                           placeholder="Your Merchant username"
+                                                           name="UserName"
+                                                           ng-model="vm.model.UserName"
+                                                           validate-on="dirty"
+                                                           validator="vm.model.validator().UserName(vm.model.UserName) === true"
+                                                           invalid-message="vm.model.validator().UserName(vm.model.UserName)">
+                                                </div>
+                                            </div>
+                                            <div class="item item-full">
+                                                <label for="store-email" class="block">Email<span class="required">*</span></label>
+                                                <div class="input-wrap">
+                                                    <input class="form-control"
+                                                           type="text"
+                                                           autocomplete="off"
+                                                           placeholder="Your Email"
+                                                           name="Email"
+                                                           ng-model="vm.model.Email"
+                                                           validate-on="dirty"
+                                                           validator="vm.model.validator().Email(vm.model.Email) === true"
+                                                           invalid-message="vm.model.validator().Email(vm.model.Email)">
+                                                </div>
+                                            </div>
+                                            <div class="item item-full">
+                                                <label for="store-password" class="block">Password<span class="required">*</span></label>
+                                                <div class="input-wrap">
+                                                    <input class="form-control"
+                                                           type="password"
+                                                           autocomplete="off"
+                                                           placeholder="Your Password"
+                                                           name="Password"
+                                                           ng-model="vm.model.Password"
+                                                           validate-on="dirty"
+                                                           validator="vm.model.validator().Password(vm.model.Password) === true"
+                                                           invalid-message="vm.model.validator().Password(vm.model.Password)">
+                                                </div>
+                                            </div>
+                                            <div class="item item-full">
+                                                <label for="store-password2" class="block">Confirm Password<span class="required">*</span></label>
+                                                <div class="input-wrap">
+                                                    <input class="form-control"
+                                                           type="password"
+                                                           autocomplete="off"
+                                                           placeholder="Re-enter your Password"
+                                                           name="ConfirmPassword"
+                                                           ng-model="vm.model.ConfirmPassword"
+                                                           validate-on="dirty"
+                                                           validator="vm.model.validator().ConfirmPassword(vm.model.ConfirmPassword, vm.model.Password) === true"
+                                                           invalid-message="vm.model.validator().ConfirmPassword(vm.model.ConfirmPassword, vm.model.Password)">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item item-border item-col">
+                                        <div class="col col-left">
+                                            <h3>Account details</h3>
+                                        </div>
+                                        <div class="col col-right">
+                                            <div class="item item-full">
+                                                <label for="store-name" class="block">Store name<span class="required">*</span></label>
+                                                <div class="input-wrap">
+                                                    <!--<input type="text" id="store-name" placeholder="Your company store name" />-->
+                                                    <input class="form-control"
+                                                           type="text"
+                                                           autocomplete="off"
+                                                           placeholder="Your company store name"
+                                                           name="StoreName"
+                                                           ng-model="vm.model.StoreName"
+                                                           validate-on="dirty"
+                                                           validator="vm.model.validator().StoreName(vm.model.StoreName) === true"
+                                                           invalid-message="vm.model.validator().StoreName(vm.model.StoreName)">
+                                                </div>
+                                                <div class="error" data-ng-show="vm.FailureStoreName">{{vm.MessagesStoreName}}</div>
+                                            </div>
+                                            <div class="item item-full">
+                                                <label for="store-fullname" class="block">Full name<span class="required">*</span></label>
+                                                <div class="input-wrap">
+                                                    <!--<input type="text" id="store-fullname" placeholder="Your own name" />-->
+                                                    <input class="form-control"
+                                                           type="text"
+                                                           autocomplete="off"
+                                                           placeholder="Your own name"
+                                                           name="FullName"
+                                                           ng-model="vm.model.FullName"
+                                                           validate-on="dirty"
+                                                           validator="vm.model.validator().FullName(vm.model.FullName) === true"
+                                                           invalid-message="vm.model.validator().FullName(vm.model.FullName)">
+                                                </div>
+                                            </div>
+                                            <div class="item item-full">
+                                                <label for="store-address" class="block">Address</label>
+                                                <div class="input-wrap">
+                                                    <input type="text" ng-model="vm.model.Address1" placeholder="Address line 1" class="form-control" />
+                                                </div>
+                                                <div class="input-wrap">
+                                                    <input type="text" ng-model="vm.model.Address2" placeholder="Address line 2" class="form-control" />
+                                                </div>
+                                            </div>
+                                            <div class="item item-full clearfix">
+                                                <div class="item item-inline">
+                                                    <label for="store-city" class="block">City<span class="required">*</span></label>
+                                                    <div class="input-wrap">
+                                                        <input type="text"
+                                                                ng-model="vm.model.City"
+                                                                name="City"
+                                                                placeholder="Your City"
+                                                                class="form-control" 
+                                                                validate-on="dirty"
+                                                                validator="vm.model.validator().City(vm.model.City) === true"
+                                                                invalid-message="vm.model.validator().City(vm.model.City)" />
+                                                    </div>
+                                                </div>
+                                                <div class="item item-inline">
+                                                    <label for="store-postcode" class="block">Postal code<span class="required">*</span></label>
+                                                    <div class="input-wrap">
+                                                        <input type="text"
+                                                                ng-model="vm.model.PostCode"
+                                                                name="PostCode"
+                                                                placeholder="Your postal code"
+                                                                class="form-control"
+                                                                validate-on="dirty"
+                                                                validator="vm.model.validator().PostCode(vm.model.PostCode) === true"
+                                                                invalid-message="vm.model.validator().PostCode(vm.model.PostCode)" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="item item-full">
+                                                <label for="store-state" class="block">State</label>
+                                                <div class="input-wrap">
+                                                    <!--<select id="store-state" name="store-state">
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                    </select>-->
+                                                    <input type="text" ng-model="vm.model.StateName" placeholder="Your State" class="form-control" />
+                                                </div>
+                                            </div>
+                                            <div class="item item-full">
+                                                <label for="store-country" class="block">Country</label>
+                                                <div class="input-wrap">
+                                                    <select data-ng-model="vm.model.CountryID" class="form-control">
+                                                        <option value="0">Select your country</option>
+                                                        <option ng-repeat="country in vm.model.countries" value="{{country.CountryID}}">{{country.Name}} </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="item item-full">
+                                                <label for="store-state" class="block">Telephone Number</label>
+                                                <div class="input-wrap">
+                                                    <input type="text" ng-model="vm.model.PhoneNumber" placeholder="10 digits, nodashes." class="form-control" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item item-border item-col">
+                                        <div class="col col-left">
+                                            <h3>Terms of Service</h3>
+                                        </div>
+                                        <div class="col col-right">
+                                            <p>By clicking the button below you agree to <a href="#/content/tos">Terms and Conditions of Merchant Sale.</a></p>
+                                            <div class="error" data-ng-show="vm.failure">{{vm.Messages}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-primary" ng-disabled="form.$invalid" data-ng-click="vm.btnSubmitClicked()">Complete Merchant Registration</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

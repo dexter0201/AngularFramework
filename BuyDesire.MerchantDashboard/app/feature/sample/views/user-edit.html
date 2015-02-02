@@ -1,0 +1,42 @@
+﻿<div data-ng-controller="userEditController as vm">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Edit User #{{vm.model.ID}} : {{vm.model.Email}}</h3>
+        </div>
+        <div class="panel-body">
+            <form name="formName" class="form w90p center" data-ng-submit="vm.submitForm(formName.$valid)" novalidate>
+                <div class="form-group form_row" ng-class="{ 'has-error' : formName.Email.$invalid && !formName.Email.$pristine }">
+                    <input type="text" name="Email" placeholder="Email" class="form-control form_input" data-ng-model="vm.model.Email" required>
+                    <p ng-show="formName.Email.$invalid && !formName.Email.$pristine" class="form_error_message">Email is required.</p>
+                    <br class="clr" />
+                </div>
+                <div class="form-group form_row" ng-class="{ 'has-error' : formName.Name.$invalid && !formName.Name.$pristine }">
+                    <input type="text" name="Name" placeholder="Name" class="form-control form_input" data-ng-model="vm.model.Name" required>
+                    <p ng-show="formName.Name.$invalid && !formName.Name.$pristine" class="form_error_message">Name is required.</p>
+                    <br class="clr" />
+                </div>
+                <div class="form-group form_row" ng-class="{ 'has-error' : formName.Address.$invalid && !formName.Address.$pristine }">
+                    <input type="text" name="Address" placeholder="Address" class="form-control form_input" data-ng-model="vm.model.Address" required>
+                    <p ng-show="formName.Address.$invalid && !formName.Address.$pristine" class="form_error_message">Address is required.</p>
+                    <br class="clr" />
+                </div>
+                <div class="form-group form_row" ng-class="{ 'has-error' : formName.Phone.$invalid && !formName.Phone.$pristine }">
+                    <input type="text" name="Phone" placeholder="Phone" maxlength="90" class="form-control form_input" data-ng-model="vm.model.Phone" required>
+                    <p ng-show="formName.Phone.$invalid && !formName.Phone.$pristine" class="form_error_message">Phone is required.</p>
+                    <br class="clr" />
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary floatR" type="submit">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <debug data-name="vm.model" data-type="vm.model.getType()" data-value="vm.model"></debug>
+
+    <div class="row">
+        <div class="col-lg-3 col-xs-6">
+            <div data-user-profile data-source="vm.model" data-on-click="onClick(vm.model.ID)"></div>
+        </div>
+    </div>
+</div>

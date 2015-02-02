@@ -1,0 +1,56 @@
+﻿[suggested by sinh.tran]
+
+
+
+Every one please provide:
+
+[1] 1 sample for client-side validation
+ex. "UserName" validation need:
+    + not null
+	+ 6 < length < 20
+	+ does not contain: 'test' / 'admin' / 'demo' (black-list)
+
+
+[2] 1 sample for server-side validation via api
+(simulate it, dont have to call real api)
+	+ check if email is taken (existed in db)
+
+[3] show how we can reuse it in other views
+
+
+//hint:
+==> every validation functions need to stored in "model" then we can reuse it between "views"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
